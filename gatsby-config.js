@@ -2,7 +2,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `wakame.tech`,
     authors: [
       { name: 'Tori', slug: 'tori' },
       { name: 'Neko', slug: 'neko' },
@@ -13,7 +13,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
-        fileName: `types/graphql-types.d.ts`
+        fileName: `types/graphql-types.d.ts`,
+        codegenDelay: 200,
+        codegen: false
       }
     },
     `gatsby-transformer-remark`,

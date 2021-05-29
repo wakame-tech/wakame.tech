@@ -1,14 +1,12 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { AuthorPageContext } from "../../gatsby-node"
-// ______________________________________________________
-//
+import React from 'react'
+import { Link } from 'gatsby'
+import { AuthorPageContext } from '../../gatsby-node'
+
 type Props = {
     pageContext: AuthorPageContext
 }
-// ______________________________________________________
-//
-const Component: React.FC<Props> = ({ pageContext }) => (
+
+const Component = ({ pageContext }: Props) => (
     <div>
         <h1>Author name is {pageContext.author.name}</h1>
         <ul>
@@ -17,6 +15,5 @@ const Component: React.FC<Props> = ({ pageContext }) => (
         </ul>
     </div>
 )
-// ______________________________________________________
-//
+
 export default Component

@@ -1133,6 +1133,7 @@ export type SitePlugin = Node & {
 
 export type SitePluginPluginOptions = {
   fileName?: Maybe<Scalars['String']>;
+  codegenDelay?: Maybe<Scalars['Int']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
@@ -2850,6 +2851,7 @@ export type SitePluginFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   fileName?: Maybe<StringQueryOperatorInput>;
+  codegenDelay?: Maybe<IntQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
@@ -3105,6 +3107,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___name'
   | 'pluginCreator___version'
   | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___codegenDelay'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -6939,6 +6942,7 @@ export type SitePluginFieldsEnum =
   | 'name'
   | 'version'
   | 'pluginOptions___fileName'
+  | 'pluginOptions___codegenDelay'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
@@ -7014,14 +7018,9 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<(
-      Pick<SiteSiteMetadata, 'title' | 'description'>
+      Pick<SiteSiteMetadata, 'title'>
       & { authors?: Maybe<Array<Maybe<Pick<SiteSiteMetadataAuthors, 'name' | 'slug'>>>> }
     )> }> };
-
-export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_2_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
