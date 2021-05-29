@@ -274,6 +274,7 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  ogpImageUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -2456,6 +2457,7 @@ export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  ogpImageUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -2508,6 +2510,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'siteMetadata___ogpImageUrl'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -6974,7 +6977,7 @@ export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<Sit
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }> };
+export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author' | 'description' | 'ogpImageUrl'>> }> };
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 

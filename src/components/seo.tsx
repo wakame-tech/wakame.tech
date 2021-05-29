@@ -15,6 +15,8 @@ const Seo = (props: Props) => {
           siteMetadata {
             title
             author
+            description
+            ogpImageUrl
           }
         }
       }
@@ -23,6 +25,7 @@ const Seo = (props: Props) => {
 
   const metaDescription = site?.siteMetadata?.description ?? ''
   const title = site?.siteMetadata?.title ?? props.title ?? ''
+  const ogpImageUrl = site?.siteMetadata?.ogpImageUrl ?? ''
 
   return (
     <Helmet
@@ -36,6 +39,10 @@ const Seo = (props: Props) => {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          name: `og:image`,
+          content: ogpImageUrl,
         },
         {
           property: `og:description`,
@@ -55,7 +62,7 @@ const Seo = (props: Props) => {
         },
         {
           name: `twitter:image`,
-          content: 'https://i.imgur.com/hnDPgbO.png',
+          content: ogpImageUrl,
         },
         {
           name: `twitter:description`,

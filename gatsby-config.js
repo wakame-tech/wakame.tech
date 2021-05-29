@@ -4,7 +4,8 @@ module.exports = {
   siteMetadata: {
     title: `wakame.tech`,
     author: 'wakame_tech',
-    description: 'ポートフォリオです。'
+    description: 'ポートフォリオです。',
+    ogpImageUrl: 'https://i.imgur.com/hnDPgbO.png',
   },
   plugins: [
     {
