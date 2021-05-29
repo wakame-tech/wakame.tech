@@ -1,24 +1,21 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-type PropType = {
+type Props = {
   siteTitle: string
 }
 
-const Header = ({ siteTitle }: PropType) => (
-  <div>
+const Header = ({ siteTitle }: Props) => (
+  <div className="bg-green-700">
     <div className="p-2">
-      <h1 style={{ margin: 0 }}>
-        <Link
-          className="text-white text-2xl"
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+      <p
+        className="text-white text-2xl"
+        style={{
+          textDecoration: 'none'
+        }}
+      >
+        <Link to="/">{siteTitle}</Link>
+      </p>
     </div>
   </div>
 )

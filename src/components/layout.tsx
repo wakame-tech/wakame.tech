@@ -2,9 +2,10 @@ import React, { ReactNode } from 'react'
 import '../utils/global.css'
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './header'
+import { Site } from '../../types/graphql-types'
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const data = useStaticQuery(graphql`
+  const { site } = useStaticQuery<{ site: Site }>(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -16,24 +17,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <Header siteTitle={site?.siteMetadata?.title ?? ''} />
+      <div>
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
       </div>
     </>
   )

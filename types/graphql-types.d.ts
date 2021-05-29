@@ -254,8 +254,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -275,12 +273,7 @@ export type SiteBuildTimeArgs = {
 export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  authors?: Maybe<Array<Maybe<SiteSiteMetadataAuthors>>>;
-};
-
-export type SiteSiteMetadataAuthors = {
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -308,18 +301,8 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContext = {
-  author?: Maybe<SitePageContextAuthor>;
-};
-
-export type SitePageContextAuthor = {
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownHeading = {
@@ -1134,6 +1117,7 @@ export type SitePlugin = Node & {
 export type SitePluginPluginOptions = {
   fileName?: Maybe<Scalars['String']>;
   codegenDelay?: Maybe<Scalars['Int']>;
+  codegen?: Maybe<Scalars['Boolean']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
@@ -1341,8 +1325,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1394,7 +1376,6 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
@@ -2474,16 +2455,7 @@ export type DirectorySortInput = {
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  authors?: Maybe<SiteSiteMetadataAuthorsFilterListInput>;
-};
-
-export type SiteSiteMetadataAuthorsFilterListInput = {
-  elemMatch?: Maybe<SiteSiteMetadataAuthorsFilterInput>;
-};
-
-export type SiteSiteMetadataAuthorsFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
+  author?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -2535,11 +2507,7 @@ export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
-  | 'siteMetadata___authors'
-  | 'siteMetadata___authors___name'
-  | 'siteMetadata___authors___slug'
-  | 'port'
-  | 'host'
+  | 'siteMetadata___author'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2641,8 +2609,6 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2824,15 +2790,6 @@ export type SiteFunctionSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type SitePageContextFilterInput = {
-  author?: Maybe<SitePageContextAuthorFilterInput>;
-};
-
-export type SitePageContextAuthorFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePluginFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2852,6 +2809,7 @@ export type SitePluginFilterInput = {
 export type SitePluginPluginOptionsFilterInput = {
   fileName?: Maybe<StringQueryOperatorInput>;
   codegenDelay?: Maybe<IntQueryOperatorInput>;
+  codegen?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
@@ -3063,8 +3021,6 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
-  | 'context___author___name'
-  | 'context___author___slug'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -3108,6 +3064,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___version'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___codegenDelay'
+  | 'pluginCreator___pluginOptions___codegen'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -3181,7 +3138,6 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
@@ -6943,6 +6899,7 @@ export type SitePluginFieldsEnum =
   | 'version'
   | 'pluginOptions___fileName'
   | 'pluginOptions___codegenDelay'
+  | 'pluginOptions___codegen'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
@@ -7017,10 +6974,12 @@ export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<Sit
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<(
-      Pick<SiteSiteMetadata, 'title'>
-      & { authors?: Maybe<Array<Maybe<Pick<SiteSiteMetadataAuthors, 'name' | 'slug'>>>> }
-    )> }> };
+export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }> };
+
+export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_2_Query = { allContentfulWork: { nodes: Array<Pick<ContentfulWork, 'id' | 'tags' | 'title' | 'genre' | 'date'>> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

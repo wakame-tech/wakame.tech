@@ -3,11 +3,8 @@ require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: `wakame.tech`,
-    authors: [
-      { name: 'Tori', slug: 'tori' },
-      { name: 'Neko', slug: 'neko' },
-      { name: 'Inu', slug: 'inu' }
-    ]
+    author: 'wakame_tech',
+    description: 'ポートフォリオです。'
   },
   plugins: [
     {
@@ -15,7 +12,7 @@ module.exports = {
       options: {
         fileName: `types/graphql-types.d.ts`,
         codegenDelay: 200,
-        codegen: false
+        codegen: true
       }
     },
     `gatsby-transformer-remark`,
@@ -47,7 +44,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

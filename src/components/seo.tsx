@@ -1,26 +1,28 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { Site } from '../../types/graphql-types'
 
-const Seo = () => {
-  const { site } = useStaticQuery(
+type Props = {
+  title?: string
+}
+
+const Seo = (props: Props) => {
+  const { site } = useStaticQuery<{ site: Site }>(
     graphql`
       query {
         site {
           siteMetadata {
             title
-            authors {
-              name
-              slug
-            }
+            author
           }
         }
       }
     `
   )
 
-  const metaDescription = site.siteMetadata.description
-  const title = site.siteMetadata.title
+  const metaDescription = site?.siteMetadata?.description ?? ''
+  const title = site?.siteMetadata?.title ?? props.title ?? ''
 
   return (
     <Helmet
@@ -45,15 +47,15 @@ const Seo = () => {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: `summary_large_image`, // `summary`
         },
         {
           name: `twitter:title`,
           content: title,
+        },
+        {
+          name: `twitter:image`,
+          content: 'https://i.imgur.com/hnDPgbO.png',
         },
         {
           name: `twitter:description`,
