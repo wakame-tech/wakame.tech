@@ -7,9 +7,9 @@ const IndexPage = () => (
   <Layout>
     <Seo />
 
-    <h1 className="font-bold">Hello Tailwind</h1>
-
-    <WorksComponent />
+    <div className="p-2">
+      <WorksComponent />
+    </div>
   </Layout>
 )
 
