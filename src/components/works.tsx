@@ -14,7 +14,9 @@ const WorksComponent = () => {
             title
             genre
             description {
-              description
+              childMarkdownRemark {
+                html
+              }
             }
             date
             thumbnail {
@@ -30,7 +32,7 @@ const WorksComponent = () => {
   return <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
     {allContentfulWork?.nodes ?
       allContentfulWork?.nodes.map(work =>
-        <div key={work.id} className="h-full w-full">
+        <div key={work.id} className="w-full min-h-36">
           <WorkComponent work={work} />
         </div>
       )
