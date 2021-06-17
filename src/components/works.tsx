@@ -15,21 +15,20 @@ const WorksComponent = () => {
             genre
             description {
               childMarkdownRemark {
-                html
+                # html
+                rawMarkdownBody
               }
             }
             date
             thumbnail {
-              file {
-                url
-              }
+              gatsbyImageData(aspectRatio: 1.7)
             }
           }
         }
       }
     `)
 
-  return <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  return <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
     {allContentfulWork?.nodes ?
       allContentfulWork?.nodes.map(work =>
         <div key={work.id} className="w-full min-h-36">

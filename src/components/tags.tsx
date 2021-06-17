@@ -16,7 +16,7 @@ const Tags = (props: { tags: string[] }) => {
         <div>
             {props.tags.map(tag =>
                 <div key={tag} className="ml-2 px-2 py-1 bg-green-800 rounded-md inline-block">
-                    <div className="text-white font-bold text-xs">
+                    <div className="text-white font-thin text-xs">
                         {prefixedEmoji(tag)}
                     </div>
                 </div>
