@@ -14,7 +14,7 @@ const Header = ({ siteTitle }: Props) => (
           textDecoration: 'none'
         }}
       >
-        <Link to="/">{siteTitle}</Link>
+        <Link to="/">{siteTitle} (WIP)</Link>
       </p>
     </div>
   </div>

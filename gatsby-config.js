@@ -49,11 +49,24 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        head: false,
+        anonymize: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `blog-articles`,
+        // in dev
+        // local: process.env.LOCAL_ARTICLE_PATH,
+        remote: `https://github.com/wakame-tech/blog-articles`,
+        branch: `main`,
+        patterns: `docs/**`
+      }
+    },
   ],
 }

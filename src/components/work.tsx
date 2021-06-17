@@ -5,7 +5,7 @@ import Tags from './tags'
 
 const WorkComponent = (props: { work: ContentfulWork }) => {
     return (
-        <div className="shadow-md rounded-xl h-full">
+        <div className="bg-white shadow-md rounded-xl h-full">
             <div className="h-2/5">
                 {props.work.thumbnail
                     ? (<GatsbyImage
@@ -31,8 +31,8 @@ const WorkComponent = (props: { work: ContentfulWork }) => {
                 </div>
 
                 <div className="p-2 overflow-hidden">
-                    <p className="text-gray-600 text-sm">
-                        {props.work.description?.childMarkdownRemark?.rawMarkdownBody}
+                    <p className="text-gray-600 text-sm" dangerouslySetInnerHTML={{ __html: props.work.description?.childMarkdownRemark?.html ?? '' }}>
+                        {/* {props.work.description?.childMarkdownRemark?.rawMarkdownBody} */}
                     </p>
                 </div>
             </div>

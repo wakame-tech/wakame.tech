@@ -15,13 +15,13 @@ const WorksComponent = () => {
             genre
             description {
               childMarkdownRemark {
-                # html
+                html
                 rawMarkdownBody
               }
             }
             date
             thumbnail {
-              gatsbyImageData(aspectRatio: 1.7)
+              gatsbyImageData(aspectRatio: 1.7, quality: 100)
             }
           }
         }
