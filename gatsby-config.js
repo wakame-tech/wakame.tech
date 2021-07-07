@@ -16,7 +16,6 @@ module.exports = {
         codegen: true
       }
     },
-    `gatsby-transformer-remark`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-contentful`,
@@ -57,16 +56,52 @@ module.exports = {
         anonymize: true,
       },
     },
+    // {
+    //   resolve: `gatsby-source-git`,
+    //   options: {
+    //     name: `blog-articles`,
+    //     // in dev
+    //     // local: process.env.LOCAL_ARTICLE_PATH,
+    //     remote: `https://github.com/wakame-tech/blog-articles.git`,
+    //     branch: `main`,
+    //     patterns: `docs/**`
+    //   }
+    // },
     {
-      resolve: `gatsby-source-git`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog-articles`,
-        // in dev
-        // local: process.env.LOCAL_ARTICLE_PATH,
-        remote: `https://github.com/wakame-tech/blog-articles`,
-        branch: `main`,
-        patterns: `docs/**`
-      }
+        name: `data`,
+        path: `${__dirname}\\blog-articles\\docs`,
+        ignore: [`**/\.md`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/src/pages/*`] },
+    },
+    {
+      resolve: `gatsby-remark-prismjs`,
+      options: {
+        classPrefix: "language-",
+        inlineCodeMarker: null,
+        aliases: {},
+        showLineNumbers: true,
+        noInlineHighlight: false,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: 'Dark (Visual Studio)' // Or install your favorite theme from GitHub
+            }
+          },
+          `gatsby-remark-katex`
+        ],
+      },
     },
   ],
 }

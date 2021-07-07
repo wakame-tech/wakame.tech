@@ -8,14 +8,15 @@ type Props = {
 const Header = ({ siteTitle }: Props) => (
   <div className="bg-green-700">
     <div className="p-2">
-      <p
+      <Link
+        to="/"
         className="text-white text-2xl"
         style={{
           textDecoration: 'none'
         }}
       >
-        <Link to="/">{siteTitle} (WIP)</Link>
-      </p>
+        {siteTitle} (WIP)
+      </Link>
     </div>
   </div>
 )

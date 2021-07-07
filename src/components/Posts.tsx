@@ -1,16 +1,18 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MarkdownRemarkConnection } from '../../types/graphql-types'
-import Post from '../Post'
+import Post from './post'
 
 const Posts = () => {
     const { allMarkdownRemark } = useStaticQuery<{ allMarkdownRemark: MarkdownRemarkConnection }>(graphql`
         {
-            allMarkdownRemark {
+            allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date }) {
                 nodes {
                     id
                     frontmatter {
                         title
+                        date
+                        tags
                     }
                     rawMarkdownBody
                     html
@@ -25,10 +27,15 @@ const Posts = () => {
     console.log(posts)
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-1">
+        <div className="grid md:grid-cols-3 grid-cols-1">
             {posts.map(post =>
-                <div key={post.id}>
-                    <Post title={post.frontmatter?.title ?? ''} content={post.html ?? ''} />
+                <div className="pb-2 md:col-span-2" key={post.id}>
+                    <Post
+                        title={post.frontmatter?.title ?? ''}
+                        date={post.frontmatter?.date}
+                        tags={post.frontmatter?.tags ?? []}
+                        content={post.html ?? ''} 
+                    />
                 </div>
             )}
         </div>

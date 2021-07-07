@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { AuthorPageContext } from '../../gatsby-node'
+// import { AuthorPageContext } from '../../gatsby-node'
 
 type Props = {
-    pageContext: AuthorPageContext
+    pageContext: any // AuthorPageContext
 }
 
 const Component = ({ pageContext }: Props) => (
