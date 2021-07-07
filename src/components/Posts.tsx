@@ -6,7 +6,8 @@ import Post from './post'
 const Posts = () => {
     const { allMarkdownRemark } = useStaticQuery<{ allMarkdownRemark: MarkdownRemarkConnection }>(graphql`
         {
-            allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date }) {
+            # allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date }) {
+            allMarkdownRemark {
                 nodes {
                     id
                     frontmatter {
@@ -32,8 +33,10 @@ const Posts = () => {
                 <div className="pb-2 md:col-span-2" key={post.id}>
                     <Post
                         title={post.frontmatter?.title ?? ''}
-                        date={post.frontmatter?.date}
-                        tags={post.frontmatter?.tags ?? []}
+                        date={new Date().toString()}
+                        tags={[]}
+                        // date={post.frontmatter?.date}
+                        // tags={post.frontmatter?.tags as string[] ?? []}
                         content={post.html ?? ''} 
                     />
                 </div>
