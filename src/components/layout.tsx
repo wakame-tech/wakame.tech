@@ -10,6 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       site {
         siteMetadata {
           title
+          description
         }
       }
     }
@@ -17,7 +18,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Header siteTitle={site?.siteMetadata?.title ?? ''} />
+      <Header
+        siteTitle={site?.siteMetadata?.title ?? ''}
+        siteDescription={site?.siteMetadata?.description ?? ''}
+      />
       <div>
         <main>{children}</main>
       </div>

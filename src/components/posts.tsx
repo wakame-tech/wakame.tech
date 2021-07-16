@@ -1,22 +1,19 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MarkdownRemarkConnection } from '../../types/graphql-types'
-import Post from './post'
+import PostCard from './post_card'
 
 const Posts = () => {
     const { allMarkdownRemark } = useStaticQuery<{ allMarkdownRemark: MarkdownRemarkConnection }>(graphql`
         {
-            # allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date }) {
-            allMarkdownRemark {
+            allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date }) {
                 nodes {
                     id
                     frontmatter {
                         title
-                        date
                         tags
+                        date(formatString: "YYYY-MM-DD")
                     }
-                    rawMarkdownBody
-                    html
                 }
             }
         }
@@ -25,22 +22,20 @@ const Posts = () => {
     // have title ?
     const posts = allMarkdownRemark.nodes.filter(node => !!node.frontmatter?.title)
 
-    console.log(posts)
-
     return (
-        <div className="grid md:grid-cols-3 grid-cols-1">
-            {posts.map(post =>
-                <div className="pb-2 md:col-span-2" key={post.id}>
-                    <Post
-                        title={post.frontmatter?.title ?? ''}
-                        date={new Date().toString()}
-                        tags={[]}
-                        // date={post.frontmatter?.date}
-                        // tags={post.frontmatter?.tags as string[] ?? []}
-                        content={post.html ?? ''} 
-                    />
-                </div>
-            )}
+        <div className="m-auto">
+            <ul>
+                {posts.map(post =>
+                    <div className="" key={post.id}>
+                        <PostCard
+                            id={post.id}
+                            tags={post.frontmatter?.tags?.map(tag => tag ?? '') ?? []}
+                            title={post.frontmatter?.title ?? ''}
+                            date={post.frontmatter?.date}
+                        />
+                    </div>
+                )}
+            </ul>
         </div>
     )
 }

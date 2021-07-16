@@ -1,20 +1,52 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import { ContentfulWork } from "../../types/graphql-types"
 import Layout from '../components/layout'
 import Seo from '../components/seo'
-import WorksComponent from '../components/works'
+import WorkComponent from '../components/work'
 
 const WorksPage = () => {
-    return (
-        <Layout>
-            <Seo />
+  const { allContentfulWork } = useStaticQuery<{ allContentfulWork: { nodes: ContentfulWork[] } }>(
+    graphql`
+      {
+        allContentfulWork(sort: {fields: date, order: DESC}) {
+          nodes {
+            id
+            tags
+            title
+            genre
+            description {
+              childMarkdownRemark {
+                html
+                rawMarkdownBody
+              }
+            }
+            date(formatString: "YYYY-MM-DD")
+            thumbnail {
+              gatsbyImageData(aspectRatio: 1.7, quality: 100)
+            }
+          }
+        }
+      }
+    `)
 
-            <div className="bg-green-100 p-4">
-                <div className="p-2">
-                    <WorksComponent />
+  return (
+    <Layout>
+      <Seo />
+
+      <div className="bg-green-100 p-4">
+        <div className="p-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {allContentfulWork?.nodes.map(work =>
+                <div key={work.id} className="w-full min-h-36">
+                  <WorkComponent work={work} />
                 </div>
-            </div>
-        </Layout >
-    )
+            )}
+          </div>
+        </div>
+      </div>
+    </Layout >
+  )
 }
 
 export default WorksPage

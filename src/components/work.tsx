@@ -23,10 +23,10 @@ const WorkComponent = (props: { work: ContentfulWork }) => {
             <div className="h-3/5 min-h-36">
                 <div className="p-2">
                     <p className="text-warm-gray-700 text-xl">{props.work.title}</p>
-                    <small className="text-gray-400">{(new Date(props.work.date).toDateString())}</small>
+                    <small className="text-gray-400">{props.work.date}</small>
                 </div>
 
-                <div className="">
+                <div className="pl-2">
                     <Tags tags={props.work.tags as string[] | undefined ?? []} />
                 </div>
 

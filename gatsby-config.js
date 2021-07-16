@@ -1,14 +1,20 @@
 require('dotenv').config()
 
+// require("ts-node").register({
+//   compilerOptions: {
+//     module: "commonjs",
+//     target: "esnext",
+//   },
+// })
+
 module.exports = {
   siteMetadata: {
-    title: `wakame.tech`,
+    title: `自己否定感`,
     author: 'wakame_tech',
-    description: 'ポートフォリオです。',
+    description: '雑記置き場',
     ogpImageUrl: 'https://i.imgur.com/hnDPgbO.png',
   },
   plugins: [
-    `gatsby-plugin-typescript`,
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
@@ -103,5 +109,5 @@ module.exports = {
         ],
       },
     },
-  ],
+  ]
 }

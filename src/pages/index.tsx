@@ -8,10 +8,8 @@ const IndexPage = () => {
     <Layout>
       <Seo />
 
-      <div className="bg-green-100 p-2">
-        <div className="p-2">
-          <Posts />
-        </div>
+      <div className="p-2">
+        <Posts />
       </div>
     </Layout >
   )
