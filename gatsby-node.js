@@ -1,5 +1,5 @@
 'use strict'
-import path from "path"
+const path = require('path')
 require('ts-node').register({
     compilerOptions: {
         module: 'commonjs',
