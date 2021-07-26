@@ -98,16 +98,21 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        footnodes: false,
         plugins: [
+          `gatsby-remark-prismjs-title`,
+          {
+            resolve: `gatsby-remark-link-card`,
+          },
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: 'Dark (Visual Studio)' // Or install your favorite theme from GitHub
+              theme: 'Dark (Visual Studio)',
             }
           },
-          `gatsby-remark-katex`
         ],
       },
     },
+    `@weknow/gatsby-remark-twitter`,
   ]
 }

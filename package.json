@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@weknow/gatsby-remark-twitter": "^0.2.3",
     "autoprefixer": "^10.2.6",
     "dotenv": "^10.0.0",
     "gatsby": "^3.4.1",
@@ -18,7 +19,10 @@
     "gatsby-plugin-react-helmet": "^4.4.0",
     "gatsby-plugin-sharp": "^3.7.1",
     "gatsby-remark-katex": "^5.4.1",
+    "gatsby-remark-link-card": "^1.0.3",
+    "gatsby-remark-link-unfurl": "^1.0.4",
     "gatsby-remark-prismjs": "^5.6.0",
+    "gatsby-remark-prismjs-title": "^1.0.0",
     "gatsby-remark-vscode": "^3.3.0",
     "gatsby-source-contentful": "^5.6.0",
     "gatsby-source-filesystem": "^3.9.0",

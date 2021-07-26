@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 h1 {
     @apply p-1;
     @apply text-2xl;
@@ -38,3 +37,143 @@ a {
     @apply text-blue-600;
     @apply underline;
 }
+
+li {
+    @apply list-disc;
+}
+
+.gatsby-code-title {
+    display: block;
+    position: relative;
+    background: #272822;
+    width: 100%;
+    top: 10px;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+}
+
+.gatsby-code-title span {
+    display: inline;
+    position: relative;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    color: #eee;
+    background: #777;
+    border-top-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    padding: 3px;
+    top: 1px;
+}
+
+.gatsby-highlight-code-line {
+    background-color: #444444;
+    display: block;
+    margin-right: -1em;
+    margin-left: -16px;
+    padding-right: 1em;
+    padding-left: 10px;
+    border-left: 6px solid rgb(102, 207, 255);
+}
+
+/* a.gatsby-remark-link-unfurl__container {
+    @apply p-2;
+    @apply ml-2;
+    @apply rounded;
+    font-size: 21px;
+    line-height: 24px;
+    font-weight: lighter;
+    max-width: 500px;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e1e8ed;
+    overflow: hidden;
+    display: flex;
+    text-decoration: none;
+    opacity: 1;
+    position: relative;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-property: background, border-color;
+    will-change: background, border-color;
+    flex-direction: column;
+}
+
+a.gatsby-remark-link-unfurl__container:hover {
+    background: #f5f8fa;
+    border-color: rgba(136, 153, 166, 0.5);
+    outline: 0;
+}
+
+.gatsby-remark-link-unfurl__media {
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex-basis: 0%;
+    background: transparent no-repeat center center / cover;
+    display: block;
+    overflow: hidden;
+    height: auto;
+}
+
+.gatsby-remark-link-unfurl__content {
+    display: flex;
+    padding: 10px 15px;
+    min-width: 0;
+    box-sizing: border-box;
+    flex: 0 0 125px;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.gatsby-remark-link-unfurl__title {
+    text-align: left;
+    font-weight: bold;
+    margin: 0;
+    width: 100%;
+    flex-grow: 1.2;
+    font-size: 16px;
+}
+
+.gatsby-remark-link-unfurl__title p {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gatsby-remark-link-unfurl__description {
+    text-align: left;
+    font-size: 14px;
+    flex-grow: 2;
+    margin: auto 0;
+    line-height: 18px;
+}
+
+.gatsby-remark-link-unfurl__description p {
+    margin: 0;
+}
+
+.gatsby-remark-link-unfurl__container footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin: 0;
+    flex-grow: 0;
+    font-size: 12px;
+    width: 100%;
+}
+
+.gatsby-remark-link-unfurl__container footer p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 0;
+}
+
+.gatsby-remark-link-unfurl__container footer span {
+    min-width: 16px;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+} */
