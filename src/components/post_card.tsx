@@ -1,6 +1,5 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import Tags from './tags'
 
 const PostCard = (props: { id: string, title: string, date: string, tags: string[] }) => {
     return (
@@ -10,8 +9,7 @@ const PostCard = (props: { id: string, title: string, date: string, tags: string
             >
                 <div>
                     <span className="pr-2">{props.date}</span>
-                    <span className="text-gray-800">{props.title}</span>
-                    <Tags tags={props.tags} />
+                    <span className="text-green-700">{props.title}</span>
                 </div>
             </Link>
         </li>

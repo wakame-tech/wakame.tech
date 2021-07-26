@@ -6,53 +6,44 @@ type Props = {
   siteDescription: string
 }
 
-const Header = ({ siteTitle, siteDescription }: Props) => (
-  <div>
-    <div className="flex items-end">
-      <div className="p-2">
-        <Link
-          to="/"
-          className="text-green-700 text-2xl"
-          style={{
-            textDecoration: 'none'
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </div>
+const Header = ({ siteTitle, siteDescription }: Props) => {
+  const routes = {
+    about: '/about',
+    works: '/works',
+  }
 
-      <div className="p-2">
-        <p className="text-gray-500">{siteDescription}</p>
-      </div>
+  return (
+    <div>
+      <div className="flex flex-wrap items-end">
+        <div className="p-2">
+          <Link
+            to="/"
+            className="text-green-700 text-2xl"
+            style={{
+              textDecoration: 'none',
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </div>
 
-      <div className="p-2">
-        <Link
-          to="/about"
-          className="text-green-700"
-        >
-          about
-        </Link>
-      </div>
-{/* 
-      <div className="p-2">
-        <Link
-          to="/tags"
-          className="text-green-700"
-        >
-          tags
-        </Link>
-      </div> */}
+        <div className="p-2">
+          <p className="text-gray-500">{siteDescription}</p>
+        </div>
 
-      <div className="p-2">
-        <Link
-          to="/works"
-          className="text-green-700"
-        >
-          works
-        </Link>
+        {Object.entries(routes).map((route) => (
+          <div key={route[0]} className="pl-2">
+            <Link
+              to={route[1]}
+              className="text-green-700"
+            >
+              {route[0]}
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Header

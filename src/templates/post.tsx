@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostPageContext } from '../gatsby-node'
+import { PostPageContext } from '../utils/ArticleType'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import Tags from '../components/tags'
@@ -19,7 +19,7 @@ const Component = ({ pageContext }: Props) => {
                 <div className="p-1">
                     <Tags tags={pageContext.tags} />
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: pageContext.html ?? '' }} />
+                <div className="markdown" dangerouslySetInnerHTML={{ __html: pageContext.html ?? '' }} />
             </div>
         </Layout >
     )

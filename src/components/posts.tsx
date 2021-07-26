@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MarkdownRemarkConnection } from '../../types/graphql-types'
 import PostCard from './post_card'
+import { isPublicArticle } from "../utils/ArticleType"
 
 const Posts = () => {
     const { allMarkdownRemark } = useStaticQuery<{ allMarkdownRemark: MarkdownRemarkConnection }>(graphql`
@@ -19,8 +20,7 @@ const Posts = () => {
         }
     `)
 
-    // have title ?
-    const posts = allMarkdownRemark.nodes.filter(node => !!node.frontmatter?.title)
+    const posts = allMarkdownRemark.nodes.filter(isPublicArticle)
 
     return (
         <div className="m-auto">
