@@ -63,24 +63,24 @@ module.exports = {
       },
     },
     // from remote
-    // {
-    //   resolve: `gatsby-source-git`,
-    //   options: {
-    //     name: `blog-articles`,
-    //     remote: `https://github.com/wakame-tech/blog-articles.git`,
-    //     branch: `main`,
-    //     patterns: `docs/**`
-    //   }
-    // },
-    // from local
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-git`,
       options: {
-        name: `data`,
-        path: `${__dirname}\\blog-articles\\docs`,
-        ignore: [`**/\.md`],
-      },
+        name: `blog-articles`,
+        remote: `https://github.com/wakame-tech/blog-articles.git`,
+        branch: `main`,
+        patterns: `docs/**`
+      }
     },
+    // from local
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `data`,
+    //     path: `${__dirname}\\blog-articles\\docs`,
+    //     ignore: [`**/\.md`],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/src/pages/*`] },
@@ -100,6 +100,7 @@ module.exports = {
       options: {
         footnodes: false,
         plugins: [
+          `@weknow/gatsby-remark-twitter`,
           {
             resolve: `gatsby-remark-link-card`,
           },
@@ -118,6 +119,5 @@ module.exports = {
         ],
       },
     },
-    `@weknow/gatsby-remark-twitter`,
   ]
 }
