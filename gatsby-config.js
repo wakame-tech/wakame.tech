@@ -1,12 +1,5 @@
 require('dotenv').config()
 
-// require("ts-node").register({
-//   compilerOptions: {
-//     module: "commonjs",
-//     target: "esnext",
-//   },
-// })
-
 module.exports = {
   siteMetadata: {
     title: `自己否定感`,
