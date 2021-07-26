@@ -61,7 +61,7 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions:
     fixedArticles
     .forEach((node) => {
       createPage<PostPageContext>({
-        path: `/posts/${node.frontmatter!.title!}/`,
+        path: `/${node.frontmatter!.title!}/`,
         component: path.resolve(__dirname, '../src/templates/post.tsx'),
         context: {
           id: node.id,

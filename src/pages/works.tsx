@@ -14,7 +14,7 @@ const WorksPage = () => {
             id
             tags
             title
-            genre
+            url
             description {
               childMarkdownRemark {
                 html

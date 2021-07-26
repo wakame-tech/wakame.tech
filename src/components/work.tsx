@@ -22,7 +22,10 @@ const WorkComponent = (props: { work: ContentfulWork }) => {
 
             <div className="h-3/5 min-h-36">
                 <div className="p-2">
-                    <p className="text-warm-gray-700 text-xl">{props.work.title}</p>
+                    {props.work.url
+                        ? <p><a href={props.work.url} className="text-warm-gray-700 text-xl">{props.work.title}</a></p>
+                        : <p className="text-warm-gray-700 text-xl">{props.work.title}</p>
+                    }
                     <small className="text-gray-400">{props.work.date}</small>
                 </div>
 
