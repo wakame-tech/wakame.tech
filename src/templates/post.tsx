@@ -13,7 +13,7 @@ const Component = ({ pageContext }: Props) => {
         <Layout>
             <Seo />
 
-            <article className="sm:p-2 md:p-4">
+            <article className="p-2">
                 <header>
                     <div className="text-center">
                         <time className="p-1 text-gray-400 text-sm">{pageContext.date}</time>
