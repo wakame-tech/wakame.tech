@@ -29,7 +29,6 @@ const Posts = () => {
                     <div className="" key={post.id}>
                         <PostCard
                             id={post.id}
-                            tags={post.frontmatter?.tags?.filter(tag => tag).map(tag => tag!!) ?? []}
                             title={post.frontmatter?.title ?? ''}
                             date={post.frontmatter?.date}
                         />
