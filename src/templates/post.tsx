@@ -13,14 +13,23 @@ const Component = ({ pageContext }: Props) => {
         <Layout>
             <Seo />
 
-            <div className="p-1">
-                <h1 className="text-gray-600 text-2xl font-bold">{pageContext.title}</h1>
-                <p className="p-1 text-gray-400">{pageContext.date}</p>
-                <div className="p-1">
-                    <Tags tags={pageContext.tags} />
-                </div>
-                <div className="markdown" dangerouslySetInnerHTML={{ __html: pageContext.html ?? '' }} />
-            </div>
+            <article className="sm:p-2 md:p-4">
+                <header>
+                    <div className="text-center">
+                        <time className="p-1 text-gray-400 text-sm">{pageContext.date}</time>
+                        <h1 className="text-gray-600 text-4xl font-bold">{pageContext.title}</h1>
+
+                        <div className="p-1">
+                            <Tags tags={pageContext.tags} />
+                        </div>
+                    </div>
+                </header>
+                
+                <section
+                    className="markdown" 
+                    dangerouslySetInnerHTML={{ __html: pageContext.html ?? '' }}
+                />
+            </article>
         </Layout >
     )
 }

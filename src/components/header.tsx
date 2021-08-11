@@ -10,6 +10,7 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
   const routes = {
     about: '/about',
     works: '/works',
+    tags: '/tags',
   }
 
   return (
@@ -35,7 +36,6 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
           <div key={route[0]} className="pl-2">
             <Link
               to={route[1]}
-              className="text-green-700"
             >
               {route[0]}
             </Link>

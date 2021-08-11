@@ -29,13 +29,13 @@
     @apply text-gray-500;
 }
 
-.markdown p * {
-    @apply text-gray-500;
+.markdown p {
+    @apply text-gray-700;
 }
 
 a {
-    @apply text-gray-800;
-    @apply underline;
+    @apply text-blue-600;
+    @apply hover:underline;
 }
 
 .markdown img {
@@ -53,6 +53,10 @@ a {
 
 .markdown ul {
     @apply list-disc pl-10;
+}
+
+.markdown .math-inline {
+    text-align: center;
 }
 
 /* code */

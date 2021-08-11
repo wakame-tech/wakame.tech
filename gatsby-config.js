@@ -93,6 +93,13 @@ module.exports = {
       options: {
         footnodes: false,
         plugins: [
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`
+            }
+          },
           `@weknow/gatsby-remark-twitter`,
           {
             resolve: `gatsby-remark-link-card`,
@@ -110,6 +117,12 @@ module.exports = {
             }
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
       },
     },
   ]
