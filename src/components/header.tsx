@@ -14,7 +14,7 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
   }
 
   return (
-    <div>
+    <div className="bg-light-50">
       <div className="flex flex-wrap items-end">
         <div className="p-2">
           <Link

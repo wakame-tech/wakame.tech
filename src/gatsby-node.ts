@@ -2,8 +2,9 @@ import path from "path"
 
 import { CreatePagesArgs, GatsbyNode } from "gatsby"
 import { MarkdownRemarkConnection } from "../types/graphql-types"
-import { isPublicArticle, isFixedArticle, PostPageContext, toContext } from "./utils/ArticleType"
-import { TagsPageContext } from './templates/tagsPage'
+import { nodeToPost } from "./utils/ArticleType"
+import { TagsPageProps } from './templates/tagsPage'
+import { Entry, Post } from "./model"
 
 const createPostPages = async ({ graphql, actions: { createPage } }: CreatePagesArgs & {
   traceId: "initial-createPages"
@@ -29,25 +30,28 @@ const createPostPages = async ({ graphql, actions: { createPage } }: CreatePages
     throw result.errors
   }
 
-  const articles = result.data.allMarkdownRemark.nodes
+  const posts = result.data.allMarkdownRemark.nodes
+    .map(nodeToPost)
+    .filter((post): post is Post => !!post)
+    .filter(post => !post.draft)
 
-  articles
-    .filter(isPublicArticle)
-    .forEach((node) => {
-      createPage<PostPageContext>({
-        path: `/posts/${node.id}/`,
+  posts
+    .filter(post => !post.fixed)
+    .forEach((post) => {
+      createPage<Post>({
+        path: post.to,
         component: path.resolve(__dirname, '../src/templates/post.tsx'),
-        context: toContext(node),
+        context: post,
       })
     })
 
-  articles
-    .filter(isFixedArticle)
-    .forEach((node) => {
-      createPage<PostPageContext>({
-        path: `/${node.frontmatter!.title!}/`,
+  posts
+    .filter(post => post.fixed)
+    .forEach(post => {
+      createPage<Post>({
+        path: `posts/${post.title}`,
         component: path.resolve(__dirname, '../src/templates/post.tsx'),
-        context: toContext(node),
+        context: post,
       })
     })
 }
@@ -76,7 +80,7 @@ export const createTagPages = async ({ graphql, actions: { createPage } }: Creat
   }
 
   const articles = result.data.allMarkdownRemark.nodes
-  const tags: Record<string, { date: string, title: string, id: string }[]> = {}
+  const entriesMap: Record<string, Entry[]> = {}
 
   articles
     .forEach((node) => {
@@ -85,25 +89,15 @@ export const createTagPages = async ({ graphql, actions: { createPage } }: Creat
           return
         }
 
-        if (!Object.keys(tags).includes(tag!!)) {
-          tags[tag!!] = [
-            {
-              id: node.id,
-              date: node.frontmatter!.date!!,
-              title: node.frontmatter!.title!!,
-            }
-          ]
+        if (!Object.keys(entriesMap).includes(tag!!)) {
+          entriesMap[tag!!] = [nodeToPost(node)]
         } else {
-          tags[tag!!].push({
-            id: node.id,
-            date: node.frontmatter!.date!!,
-            title: node.frontmatter!.title!!,
-          })
+          entriesMap[tag!!].push(nodeToPost(node))
         }
       })
     })
 
-  console.log(tags)
+  console.log(entriesMap)
 
   // Object.keys(tags)
   //   .forEach((tag) => {
@@ -116,11 +110,11 @@ export const createTagPages = async ({ graphql, actions: { createPage } }: Creat
   //     })
   //   })
 
-  createPage<TagsPageContext>({
+  createPage<TagsPageProps>({
     path: `/tags/`,
     component: path.resolve(__dirname, '../src/templates/tagsPage.tsx'),
     context: {
-      tags,
+      entriesMap,
     },
   })
 }

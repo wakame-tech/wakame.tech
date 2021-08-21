@@ -6836,6 +6836,13 @@ gatsby-recipes@^0.17.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
+gatsby-remark-blog-card@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-blog-card/-/gatsby-remark-blog-card-1.0.1.tgz#a473b30bf2043e58147cc56ddb0f9e22da553459"
+  integrity sha512-vrQgQSRrxQFh6uCmNLFf+1aNoiA3b3prx3tUBCX6zhcLoKvo73YMDu+Gr+BLE3hpMEzrx+e5QVgT9+55/+W2JA==
+  dependencies:
+    unist-util-visit "^2.0.3"
+
 gatsby-remark-katex@^5.4.1:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-katex/-/gatsby-remark-katex-5.6.0.tgz#87ddc2b66f0f59dea39af8a49b347d3c5d2b819a"

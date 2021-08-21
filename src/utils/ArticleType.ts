@@ -1,41 +1,23 @@
 import { MarkdownRemark } from "../../types/graphql-types"
+import { Post } from "../model"
 
-export type PostPageContext = {
-    id: string
-    title: string
-    tags: string[]
-    date: string
-    html: string
-}
-
-export const isPublicArticle = (node: MarkdownRemark): boolean => {
-    if (!node.frontmatter) {
-        return false
+export const nodeToPost = (node: MarkdownRemark): Post => {
+    if (!node.frontmatter || !node.frontmatter.title || !node.frontmatter.date || !node.frontmatter.tags) {
+        throw 'frontmatter not found'
     }
+
     const fm = node.frontmatter
-    const hasFrontmatter = !!fm.title && !!fm.date
     const includeFixedTag = fm.tags?.includes('fixed') ?? false
     const includeDraftTag = fm.tags?.includes('draft') ?? false
-    return !includeDraftTag && !includeFixedTag && hasFrontmatter
-}
 
-export const isFixedArticle = (node: MarkdownRemark): boolean => {
-    if (!node.frontmatter) {
-        return false
-    }
-    const fm = node.frontmatter
-    const hasFrontmatter = !!fm.title && !!fm.date
-    const includeFixedTag = fm.tags?.includes('fixed') ?? false
-    return includeFixedTag && hasFrontmatter
-}
-
-export const toContext = (node: MarkdownRemark): PostPageContext => {
-    const fm = node.frontmatter!
     return {
         id: node.id,
+        to: `posts/${node.id}`,
         title: fm.title!,
-        tags: fm.tags ? fm.tags!.map(tag => tag!) : [],
-        date: fm.date!,
+        tags: fm.tags as string[],
+        date: fm.date,
+        draft: includeDraftTag,
+        fixed: includeFixedTag,
         html: node.html!,
     }
 }
