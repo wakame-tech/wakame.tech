@@ -1,8 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MarkdownRemarkConnection } from '../../types/graphql-types'
-import { Post } from '../model'
-import { nodeToPost } from '../utils/ArticleType'
+import { getPosts } from '../utils/RemarkNodeAdapter'
 import EntryRow from './entry_row'
 
 const Posts = () => {
@@ -21,10 +20,8 @@ const Posts = () => {
         }
     `)
 
-  const posts = allMarkdownRemark.nodes
-    .map(nodeToPost)
-    .filter((post): post is Post => !!post)
-    .filter(post => !post.draft)
+  const posts = getPosts(allMarkdownRemark.nodes)
+    .filter(post => !post.draft && !post.fixed)
 
   return (
     <div className="m-auto">

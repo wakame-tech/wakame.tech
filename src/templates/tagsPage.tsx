@@ -8,7 +8,9 @@ export type TagsPageProps = {
   entriesMap: Record<string, Entry[]>,
 }
 
-const TagsPage = ({ entriesMap }: TagsPageProps) => {
+const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
+  const { entriesMap } = pageContext
+
   return (
     <Layout>
       <Seo />

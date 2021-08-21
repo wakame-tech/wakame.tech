@@ -1,9 +1,10 @@
 import { MarkdownRemark } from "../../types/graphql-types"
 import { Post } from "../model"
 
-export const nodeToPost = (node: MarkdownRemark): Post => {
+export const nodeToPost = (node: MarkdownRemark): Post | null => {
     if (!node.frontmatter || !node.frontmatter.title || !node.frontmatter.date || !node.frontmatter.tags) {
-        throw 'frontmatter not found'
+        `${node.id} ${node.fileAbsolutePath} frontmatter not found`
+        return null
     }
 
     const fm = node.frontmatter
@@ -12,7 +13,7 @@ export const nodeToPost = (node: MarkdownRemark): Post => {
 
     return {
         id: node.id,
-        to: `posts/${node.id}`,
+        to: `/posts/${node.id}`,
         title: fm.title!,
         tags: fm.tags as string[],
         date: fm.date,
@@ -20,4 +21,10 @@ export const nodeToPost = (node: MarkdownRemark): Post => {
         fixed: includeFixedTag,
         html: node.html!,
     }
+}
+
+export const getPosts = (nodes: MarkdownRemark[]): Post[] => {
+    return nodes
+        .map(nodeToPost)
+        .filter((post): post is Post => !!post)
 }

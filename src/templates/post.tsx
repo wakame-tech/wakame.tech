@@ -1,18 +1,17 @@
 import React from 'react'
 import Layout from '../components/layout'
-import Seo from '../components/seo'
 import Tags from '../components/tags'
 import { Post } from '../model'
 
-type Props = {
+export type PostPageProps = {
   post: Post
 }
 
-const Component = ({ post }: Props) => {
+const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
+  const { post } = pageContext
+
   return (
     <Layout>
-      <Seo />
-
       <article className="p-2">
         <header>
           <div className="text-center">
@@ -34,4 +33,4 @@ const Component = ({ post }: Props) => {
   )
 }
 
-export default Component
+export default PostPage
