@@ -39,8 +39,6 @@ const createPostPages = async ({ graphql, actions: { createPage } }: CreatePages
   const posts = getPosts(nodes)
     .filter(post => !post.draft)
 
-  console.log(posts)
-
   posts
     .filter(post => !post.fixed)
     .forEach((post) => {
@@ -80,8 +78,6 @@ export const createTagPages = async ({ graphql, actions: { createPage } }: Creat
         }
       })
     })
-
-  console.log(entriesMap)
 
   createPage<TagsPageProps>({
     path: `/tags/`,

@@ -2,31 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 .markdown h1 {
-    @apply p-1;
+    @apply pt-4;
     @apply text-2xl;
     @apply font-bold;
-    @apply text-gray-800;
+    @apply text-black;
 }
 
 .markdown h2 {
-    @apply p-1;
+    @apply pt-3;
     @apply text-xl;
     @apply font-bold;
-    @apply text-gray-700;
+    @apply text-black;
 }
 
 .markdown h3 {
-    @apply p-1;
+    @apply pt-2;
     @apply text-lg;
     @apply font-bold;
-    @apply text-gray-600;
+    @apply text-black;
 }
 
 .markdown h4 {
-    @apply p-1;
+    @apply pt-1;
     @apply text-lg;
     @apply font-bold;
-    @apply text-gray-500;
+    @apply text-black;
 }
 
 .markdown p {
@@ -40,6 +40,7 @@ a {
 
 .markdown img {
     @apply m-auto;
+    @apply p-2;
     max-width: 80%;
 }
 
@@ -60,6 +61,8 @@ a {
 }
 
 /* code */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 .markdown .gatsby-code-title {
     display: block;
     position: relative;
@@ -73,7 +76,7 @@ a {
 .markdown .gatsby-code-title span {
     display: inline;
     position: relative;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-family: 'Fira Code', monospace;
     color: #eee;
     background: rgba(32, 156, 88, 0.418);
     border-top-left-radius: 0.3em;
@@ -84,6 +87,7 @@ a {
 
 .markdown .gatsby-highlight-code-line {
     background-color: #444444;
+    font-family: 'Fira Code', monospace;
     display: block;
     margin-right: -1em;
     margin-left: -16px;
@@ -104,7 +108,7 @@ a {
 .markdown .gatsby-code-title span {
     display: inline;
     position: relative;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-family: 'Fira Code', monospace;
     color: #eee;
     background: #777;
     border-top-left-radius: 0.3em;

@@ -4,6 +4,7 @@ import { ContentfulWork } from "../../types/graphql-types"
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import WorkComponent from '../components/work'
+import Title from '../components/title'
 
 const WorksPage = () => {
   const { allContentfulWork } = useStaticQuery<{ allContentfulWork: { nodes: ContentfulWork[] } }>(
@@ -36,9 +37,7 @@ const WorksPage = () => {
 
       <article className="p-2">
         <header className="py-2">
-          <div className="text-center">
-            <h1 className="text-gray-600 text-4xl font-bold">works</h1>
-          </div>
+          <Title title="works" />
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -2,6 +2,7 @@ import React from 'react'
 import EntryRow from '../components/entry_row'
 import Layout from '../components/layout'
 import Posts from '../components/posts'
+import Title from '../components/title'
 import { Entry } from '../model'
 
 const slides: Entry[] = [
@@ -21,9 +22,7 @@ const IndexPage = () => {
     <Layout>
       <article className="p-2">
         <header className="py-2">
-          <div className="text-center">
-            <h1 className="text-gray-600 text-4xl font-bold">posts</h1>
-          </div>
+          <Title title="public posts" />
         </header>
 
         <Posts />
@@ -31,9 +30,7 @@ const IndexPage = () => {
 
       <article className="p-2">
         <header className="py-2">
-          <div className="text-center">
-            <h1 className="text-gray-600 text-4xl font-bold">slides</h1>
-          </div>
+          <Title title="public slides" />
         </header>
 
         <div className="m-auto">

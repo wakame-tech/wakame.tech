@@ -6,20 +6,29 @@ type Props = {
   siteDescription: string
 }
 
-const Header = ({ siteTitle, siteDescription }: Props) => {
-  const routes = {
-    about: '/about',
-    works: '/works',
-    tags: '/tags',
+const routes = [
+  {
+    name: '記事',
+    path: '/',
+  },
+  {
+    name: '作品',
+    path: '/works',
+  },
+  {
+    name: 'タグ',
+    path: '/tags',
   }
+]
 
+const Header = ({ siteTitle, siteDescription }: Props) => {
   return (
-    <div className="bg-light-50">
-      <div className="flex flex-wrap items-end">
-        <div className="p-2">
+    <div className="pt-4 bg-light-50">
+      <div className="flex flex-wrap sm:flex-row items-end">
+        <div className="px-2">
           <Link
             to="/"
-            className="text-green-700 text-2xl"
+            className="text-green-700 text-2xl font-bold"
             style={{
               textDecoration: 'none',
             }}
@@ -28,19 +37,23 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
           </Link>
         </div>
 
-        <div className="p-2">
-          <p className="text-gray-500">{siteDescription}</p>
+        <div className="px-2">
+          <p className="text-gray-500 text-xs">{siteDescription}</p>
         </div>
 
-        {Object.entries(routes).map((route) => (
-          <div key={route[0]} className="pl-2">
-            <Link
-              to={route[1]}
-            >
-              {route[0]}
-            </Link>
-          </div>
-        ))}
+        <div className="px-2">
+          {routes.map((route) => (
+            <span key={route.path} className="pl-2">
+              <Link
+                to={route.path}
+              >
+                {route.name}
+              </Link>
+            </span>
+          ))}
+        </div>
+
+
       </div>
     </div>
   )

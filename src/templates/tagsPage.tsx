@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import EntryRow from '../components/entry_row'
 import Seo from '../components/seo'
 import { Entry } from '../model'
+import Title from '../components/title'
 
 export type TagsPageProps = {
   entriesMap: Record<string, Entry[]>,
@@ -17,9 +18,7 @@ const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
 
       <article className="p-2">
         <header>
-          <div className="text-center">
-            <h1 className="text-gray-600 text-4xl font-bold">Tags</h1>
-          </div>
+          <Title title="tags" />
         </header>
 
         {Object.entries(entriesMap)

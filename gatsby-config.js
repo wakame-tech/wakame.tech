@@ -13,7 +13,8 @@ module.exports = {
       options: {
         fileName: `types/graphql-types.d.ts`,
         codegenDelay: 100,
-        codegen: true
+        codegen: true,
+        codegenConfig: { maybeValue: 'T | undefined' },
       }
     },
     {
