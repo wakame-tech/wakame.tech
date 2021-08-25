@@ -57,24 +57,24 @@ module.exports = {
       },
     },
     // from remote
-    // {
-    //   resolve: `gatsby-source-git`,
-    //   options: {
-    //     name: `blog-articles`,
-    //     remote: `https://github.com/wakame-tech/blog-articles.git`,
-    //     branch: `main`,
-    //     patterns: `docs/**`
-    //   }
-    // },
-    // from local
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-git`,
       options: {
-        name: `data`,
-        path: process.env.LOCAL_ARTICLE_PATH,
-        ignore: [`**/\.md`],
-      },
+        name: `blog-articles`,
+        remote: `https://github.com/wakame-tech/blog-articles.git`,
+        branch: `main`,
+        patterns: `docs/**`
+      }
     },
+    // from local
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `data`,
+    //     path: process.env.LOCAL_ARTICLE_PATH,
+    //     ignore: [`**/\.md`],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/src/pages/*`] },
