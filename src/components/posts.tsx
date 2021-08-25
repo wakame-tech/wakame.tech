@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MarkdownRemarkConnection } from '../../types/graphql-types'
-import { getPosts } from '../utils/RemarkNodeAdapter'
+import { createPosts } from '../utils/RemarkNodeAdapter'
 import EntryRow from './entry_row'
 
 const Posts = () => {
@@ -15,12 +15,13 @@ const Posts = () => {
                         tags
                         date(formatString: "YYYY-MM-DD")
                     }
+                    fileAbsolutePath
                 }
             }
         }
     `)
 
-  const posts = getPosts(allMarkdownRemark.nodes)
+  const posts = createPosts(allMarkdownRemark.nodes)
     .filter(post => !post.draft && !post.fixed)
 
   return (

@@ -1,19 +1,26 @@
 import { MarkdownRemark } from "../../types/graphql-types"
 import { Post } from "../model"
 
-export const nodeToPost = (node: MarkdownRemark): Post | null => {
-    if (!node.frontmatter || !node.frontmatter.title || !node.frontmatter.date || !node.frontmatter.tags) {
-        `${node.id} ${node.fileAbsolutePath} frontmatter not found`
+const basename = (filePath: string): string => {
+    const paths = filePath.split('/')
+    const fileName = paths[paths.length - 1]
+    return fileName.split('.')[0]
+}
+
+export const createPost = (node: MarkdownRemark): Post | null => {
+    if (!node.fileAbsolutePath || !node.frontmatter || !node.frontmatter.title || !node.frontmatter.date || !node.frontmatter.tags) {
+        // `${node.id} ${node.fileAbsolutePath} frontmatter not found`
         return null
     }
 
     const fm = node.frontmatter
     const includeFixedTag = fm.tags?.includes('fixed') ?? false
     const includeDraftTag = fm.tags?.includes('draft') ?? false
+    const fileBaseName = basename(node.fileAbsolutePath)
 
     return {
         id: node.id,
-        to: `/posts/${node.id}`,
+        to: `/posts/${fileBaseName}`,
         title: fm.title!,
         tags: fm.tags as string[],
         date: fm.date,
@@ -23,8 +30,8 @@ export const nodeToPost = (node: MarkdownRemark): Post | null => {
     }
 }
 
-export const getPosts = (nodes: MarkdownRemark[]): Post[] => {
+export const createPosts = (nodes: MarkdownRemark[]): Post[] => {
     return nodes
-        .map(nodeToPost)
+        .map(createPost)
         .filter((post): post is Post => !!post)
 }

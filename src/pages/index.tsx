@@ -3,19 +3,7 @@ import EntryRow from '../components/entry_row'
 import Layout from '../components/layout'
 import Posts from '../components/posts'
 import Title from '../components/title'
-import { Entry } from '../model'
-
-const slides: Entry[] = [
-  {
-    id: 'slide-1',
-    to: 'https://61212c7ff8204108cf30b83a--wizardly-knuth-9be758.netlify.app/1',
-    title: 'slidev sample',
-    tags: [],
-    date: '2021-08-22',
-    draft: false,
-    fixed: false,
-  }
-]
+import { slides } from '../utils/slides'
 
 const IndexPage = () => {
   return (

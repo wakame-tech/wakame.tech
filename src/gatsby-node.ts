@@ -3,9 +3,10 @@ import path from "path"
 import { CreatePagesArgs, GatsbyNode } from "gatsby"
 import { MarkdownRemark, MarkdownRemarkConnection } from "../types/graphql-types"
 import { Entry } from "./model"
-import { getPosts } from "./utils/RemarkNodeAdapter"
+import { createPosts } from "./utils/RemarkNodeAdapter"
 import { TagsPageProps } from './templates/tagsPage'
 import { PostPageProps } from "./templates/post"
+import { slides } from "./utils/slides"
 
 const getAllMarkdownRemark = async (graphql: CreatePagesArgs['graphql']): Promise<MarkdownRemark[]> => {
   const query = `
@@ -19,6 +20,7 @@ const getAllMarkdownRemark = async (graphql: CreatePagesArgs['graphql']): Promis
           date(formatString: "YYYY-MM-DD")
         }
         html
+        fileAbsolutePath
       }
     }
   }
@@ -36,7 +38,7 @@ const createPostPages = async ({ graphql, actions: { createPage } }: CreatePages
   traceId: "initial-createPages"
 }) => {
   const nodes = await getAllMarkdownRemark(graphql)
-  const posts = getPosts(nodes)
+  const posts = createPosts(nodes)
     .filter(post => !post.draft)
 
   posts
@@ -64,17 +66,18 @@ export const createTagPages = async ({ graphql, actions: { createPage } }: Creat
   traceId: "initial-createPages"
 }) => {
   const nodes = await getAllMarkdownRemark(graphql)
-  const posts = getPosts(nodes)
+  const posts = createPosts(nodes)
     .filter(post => !(post.fixed || post.draft))
+  const entries = [...posts, ...slides]
   const entriesMap: Record<string, Entry[]> = {}
 
-  posts
-    .forEach((post) => {
-      post.tags.forEach((tag) => {
+  entries
+    .forEach((entry) => {
+      entry.tags.forEach((tag) => {
         if (!Object.keys(entriesMap).includes(tag)) {
-          entriesMap[tag] = [post]
+          entriesMap[tag] = [entry]
         } else {
-          entriesMap[tag].push(post)
+          entriesMap[tag].push(entry)
         }
       })
     })
