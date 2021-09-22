@@ -5,11 +5,11 @@ type TitleProps = {
 }
 
 const Title = (props: TitleProps) => {
-    return (
-      <div className="text-center">
-        <h1 className="text-gray-600 text-4xl font-bold">{props.title}</h1>
-      </div>
-    )
+  return (
+    <div className="">
+      <h1 className="text-gray-800 text-2xl font-bold">{props.title}</h1>
+    </div>
+  )
 }
 
 export default Title

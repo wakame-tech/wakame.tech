@@ -10,7 +10,7 @@ const IndexPage = () => {
     <Layout>
       <article className="p-2">
         <header className="py-2">
-          <Title title="public posts" />
+          <Title title="記事.filter(isPublic)" />
         </header>
 
         <Posts />
@@ -18,7 +18,7 @@ const IndexPage = () => {
 
       <article className="p-2">
         <header className="py-2">
-          <Title title="public slides" />
+          <Title title="スライド.filter(isPublic)" />
         </header>
 
         <div className="m-auto">

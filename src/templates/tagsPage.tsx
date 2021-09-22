@@ -18,7 +18,7 @@ const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
 
       <article className="p-2">
         <header>
-          <Title title="tags" />
+          <Title title="タグ一覧" />
         </header>
 
         {Object.entries(entriesMap)
