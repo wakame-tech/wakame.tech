@@ -1,8 +1,8 @@
-import React from 'react'
-import Layout from '../components/layout'
-import Tags from '../components/tags'
-import Title from '../components/title'
-import { Post } from '../model'
+import React from "react"
+import Layout from "../components/layout"
+import Tags from "../components/tags"
+import Title from "../components/title"
+import { Post } from "../model"
 
 export type PostPageProps = {
   post: Post
@@ -19,7 +19,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
             <time className="p-1 text-gray-400 text-sm">{post.date}</time>
 
             <Title title={post.title} />
-            
+
             <div className="p-1">
               <Tags tags={post.tags} />
             </div>
@@ -29,11 +29,11 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
         <div>
           <section
             className="markdown"
-            dangerouslySetInnerHTML={{ __html: post.html ?? '' }}
+            dangerouslySetInnerHTML={{ __html: post.html ?? "" }}
           />
         </div>
       </article>
-    </Layout >
+    </Layout>
   )
 }
 

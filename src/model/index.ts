@@ -1,4 +1,3 @@
-
 // post, slide, work entries
 export type Entry = {
   id: string
@@ -10,8 +9,6 @@ export type Entry = {
   draft: boolean
 }
 
-export type Post
-  = Entry
-  & {
-    html: string
-  }
+export type Post = Entry & {
+  html: string
+}

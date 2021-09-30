@@ -63,7 +63,7 @@ module.exports = {
         name: `blog-articles`,
         remote: `https://github.com/wakame-tech/blog-articles.git`,
         branch: `main`,
-        patterns: `docs/**`
+        patterns: `blog/**`
       }
     },
     // from local

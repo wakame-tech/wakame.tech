@@ -1,16 +1,18 @@
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import { ContentfulWork } from "../../types/graphql-types"
-import Layout from '../components/layout'
-import Seo from '../components/seo'
-import WorkComponent from '../components/work'
-import Title from '../components/title'
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import WorkComponent from "../components/work"
+import Title from "../components/title"
 
 const WorksPage = () => {
-  const { allContentfulWork } = useStaticQuery<{ allContentfulWork: { nodes: ContentfulWork[] } }>(
+  const { allContentfulWork } = useStaticQuery<{
+    allContentfulWork: { nodes: ContentfulWork[] }
+  }>(
     graphql`
       {
-        allContentfulWork(sort: {fields: date, order: DESC}) {
+        allContentfulWork(sort: { fields: date, order: DESC }) {
           nodes {
             id
             tags
@@ -29,7 +31,8 @@ const WorksPage = () => {
           }
         }
       }
-    `)
+    `
+  )
 
   return (
     <Layout>
@@ -41,14 +44,14 @@ const WorksPage = () => {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {allContentfulWork?.nodes.map(work =>
+          {allContentfulWork?.nodes.map(work => (
             <div key={work.id} className="w-full min-h-36">
               <WorkComponent work={work} />
             </div>
-          )}
+          ))}
         </div>
       </article>
-    </Layout >
+    </Layout>
   )
 }
 

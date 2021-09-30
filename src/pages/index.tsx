@@ -1,9 +1,9 @@
-import React from 'react'
-import EntryRow from '../components/entry_row'
-import Layout from '../components/layout'
-import Posts from '../components/posts'
-import Title from '../components/title'
-import { slides } from '../utils/slides'
+import React from "react"
+import EntryRow from "../components/entry_row"
+import Layout from "../components/layout"
+import Posts from "../components/posts"
+import Title from "../components/title"
+import { slides } from "../utils/slides"
 
 const IndexPage = () => {
   return (
@@ -23,11 +23,11 @@ const IndexPage = () => {
 
         <div className="m-auto">
           <ul>
-            {slides.map(entry =>
+            {slides.map(entry => (
               <div className="" key={entry.to}>
                 <EntryRow entry={entry} />
               </div>
-            )}
+            ))}
           </ul>
         </div>
       </article>
