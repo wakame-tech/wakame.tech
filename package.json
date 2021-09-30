@@ -45,15 +45,19 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "gatsby-plugin-create-client-paths": "^3.9.0",
-    "prettier": "2.2.1",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.1.2"
   },
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",
     "build": "git submodule update --remote && gatsby build",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "prettier:fix": "prettier --write ./src/",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
