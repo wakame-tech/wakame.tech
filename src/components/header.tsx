@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react"
+import { Link } from "gatsby"
 
 type Props = {
   siteTitle: string
@@ -8,17 +8,17 @@ type Props = {
 
 const routes = [
   {
-    name: '記事',
-    path: '/',
+    name: "記事",
+    path: "/",
   },
   {
-    name: '作品',
-    path: '/works',
+    name: "作品",
+    path: "/works",
   },
   {
-    name: 'タグ',
-    path: '/tags',
-  }
+    name: "タグ",
+    path: "/tags",
+  },
 ]
 
 const Header = ({ siteTitle, siteDescription }: Props) => {
@@ -30,7 +30,7 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
             to="/"
             className="text-green-700 text-2xl font-bold"
             style={{
-              textDecoration: 'none',
+              textDecoration: "none",
             }}
           >
             {siteTitle}
@@ -42,18 +42,12 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
         </div>
 
         <div className="px-2">
-          {routes.map((route) => (
+          {routes.map(route => (
             <span key={route.path} className="pl-2">
-              <Link
-                to={route.path}
-              >
-                {route.name}
-              </Link>
+              <Link to={route.path}>{route.name}</Link>
             </span>
           ))}
         </div>
-
-
       </div>
     </div>
   )

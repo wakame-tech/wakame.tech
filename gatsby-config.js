@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `自己否定感`,
     author: 'wakame_tech',
-    description: '雑記置き場',
+    description: 'noop',
     ogpImageUrl: 'https://i.imgur.com/hnDPgbO.png',
   },
   plugins: [
@@ -63,7 +63,7 @@ module.exports = {
         name: `blog-articles`,
         remote: `https://github.com/wakame-tech/blog-articles.git`,
         branch: `main`,
-        patterns: `docs/**`
+        patterns: `blog/**`
       }
     },
     // from local
@@ -71,7 +71,7 @@ module.exports = {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
     //     name: `data`,
-    //     path: process.env.LOCAL_ARTICLE_PATH,
+    //     path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
     //     ignore: [`**/\.md`],
     //   },
     // },
@@ -120,6 +120,12 @@ module.exports = {
               theme: 'Monokai',
             }
           },
+          // {
+          //   resolve: `gatsby-remark-bibliography`,
+          // },
+          // {
+          //   resolve: `gatsby-remark-obsidian`,
+          // },
         ],
       },
     },

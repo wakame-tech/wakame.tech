@@ -1,106 +1,127 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
 .markdown h1 {
-    @apply pt-4;
-    @apply text-2xl;
-    @apply font-bold;
-    @apply text-black;
+  @apply pt-4;
+  @apply text-2xl;
+  @apply font-bold;
+  @apply text-black;
 }
 
 .markdown h2 {
-    @apply pt-4;
-    @apply text-xl;
-    @apply font-bold;
-    @apply text-black;
+  @apply pt-4;
+  @apply text-xl;
+  @apply font-bold;
+  @apply text-black;
 }
 
 .markdown h3 {
-    @apply pt-4;
-    @apply text-lg;
-    @apply font-bold;
-    @apply text-black;
+  @apply pt-4;
+  @apply text-lg;
+  @apply font-bold;
+  @apply text-black;
 }
 
 .markdown h4 {
-    @apply pt-2;
-    @apply text-lg;
-    @apply font-bold;
-    @apply text-black;
+  @apply pt-2;
+  @apply text-lg;
+  @apply font-bold;
+  @apply text-black;
 }
 
 .markdown p {
-    @apply text-gray-700;
+  @apply leading-tight;
+  @apply text-gray-600;
 }
 
 a {
-    @apply text-blue-600;
-    @apply hover:underline;
+  @apply text-blue-500;
+  @apply hover:underline;
 }
 
 .markdown img {
-    @apply m-auto;
-    @apply p-2;
-    max-width: 80%;
+  @apply m-auto;
+  @apply py-2;
+  max-width: 80%;
 }
 
 .markdown ol {
-    @apply list-decimal pl-10;
+  @apply list-decimal pl-6;
 }
 
 .markdown ul {
-    @apply list-disc pl-10;
+  @apply pl-6;
 }
 
-.markdown ul {
-    @apply list-disc pl-10;
+li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 0.5em;
+}
+
+li:before {
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  content: "";
+  background: #888
 }
 
 .markdown .math-inline {
-    text-align: center;
+  text-align: center;
 }
 
 /* code */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+
+.code * {
+  font-family: "Fira Code", monospace;
+}
 
 .markdown .grvsc-container {
-    @apply mx-2;
-    @apply mb-2;
-    @apply rounded;
-    z-index: 1;
+  @apply my-2;
+  z-index: 1;
 }
 
 .markdown .gatsby-code-title {
-    @apply mx-2;
-    display: block;
-    position: relative;
-    background: #272822;
-    top: 10px;
-    border-top-left-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-    z-index: 2;
+  display: block;
+  position: relative;
+  background: #272822;
+  top: 10px;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  z-index: 2;
 }
 
 .markdown .gatsby-code-title span {
-    display: inline;
-    position: relative;
-    font-family: 'Fira Code', monospace;
-    color: #eee;
-    background: #777;
-    border-top-left-radius: 0.3em;
-    border-top-right-radius: 0.3em;
-    padding: 3px;
-    top: 1px;
+  display: inline;
+  position: relative;
+  font-family: "Fira Code", monospace;
+  color: #eee;
+  background: #777;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  padding: 3px;
+  top: 1px;
 }
 
 .markdown .gatsby-highlight-code-line {
-    background-color: #444444;
-    font-family: 'Fira Code', monospace;
-    display: block;
-    margin-right: -1em;
-    margin-left: -16px;
-    padding-right: 1em;
-    padding-left: 10px;
-    border-left: 6px solid rgb(102, 207, 255);
+  background-color: #444444;
+  font-family: "Fira Code", monospace;
+  display: block;
+  margin-right: -1em;
+  margin-left: -16px;
+  padding-right: 1em;
+  padding-left: 10px;
+  border-left: 6px solid rgb(102, 207, 255);
 }
