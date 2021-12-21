@@ -15,12 +15,10 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
     <Layout>
       <article>
         <header>
-          <div className="text-center">
-            <time className="p-1 text-gray-400 text-sm">{post.date}</time>
-
+          <div className="">
+            <time className="py-1 text-gray-500 text-sm">{post.date}</time>
             <Title title={post.title} />
-
-            <div className="p-1">
+            <div className="py-1">
               <Tags tags={post.tags} />
             </div>
           </div>

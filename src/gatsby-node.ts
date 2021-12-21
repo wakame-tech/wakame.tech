@@ -1,14 +1,13 @@
-import path from "path"
-
 import { CreatePagesArgs, GatsbyNode } from "gatsby"
+import path from "path"
 import {
   MarkdownRemark,
-  MarkdownRemarkConnection,
+  MarkdownRemarkConnection
 } from "../types/graphql-types"
 import { Entry } from "./model"
-import { createPosts } from "./utils/RemarkNodeAdapter"
-import { TagsPageProps } from "./templates/tagsPage"
 import { PostPageProps } from "./templates/post"
+import { TagsPageProps } from "./templates/tagsPage"
+import { createPosts } from "./utils/RemarkNodeAdapter"
 import { slides } from "./utils/slides"
 
 const getAllMarkdownRemark = async (
