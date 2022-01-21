@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
 import EntryRow from "../components/entry_row"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Entry } from "../model"
 import Title from "../components/title"
+import { Entry } from "../model"
 
 export type TagsPageProps = {
   entriesMap: Record<string, Entry[]>
@@ -26,7 +26,7 @@ const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
             <div>
               <h2 className="pt-2 text-gray-800 text-lg font-bold">#{tag}</h2>
 
-              <ul>
+              <ul className="list-none">
                 {entries
                   .sort(
                     (a, b) =>

@@ -29,7 +29,7 @@ const Posts = () => {
 
   return (
     <div className="m-auto">
-      <ul>
+      <ul className="list-none">
         {posts.map(post => (
           <div className="" key={post.id}>
             <EntryRow entry={post} />

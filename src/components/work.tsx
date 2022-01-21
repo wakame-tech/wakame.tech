@@ -1,5 +1,5 @@
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import React from "react"
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
 import { ContentfulWork } from "../../types/graphql-types"
 import Tags from "./tags"
 

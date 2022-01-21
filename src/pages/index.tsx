@@ -22,7 +22,7 @@ const IndexPage = () => {
         </header>
 
         <div className="m-auto">
-          <ul>
+          <ul className="list-none">
             {slides.map(entry => (
               <div className="" key={entry.to}>
                 <EntryRow entry={entry} />

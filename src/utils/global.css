@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  font-family: "Fira Code", monospace;
+  /* font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif; */
 }
 
 .markdown h1 {
@@ -41,7 +50,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
 a {
   @apply text-blue-500;
-  @apply hover:underline;
+}
+
+a:hover {
+  @apply underline;
 }
 
 .markdown img {
@@ -56,24 +68,6 @@ a {
 
 .markdown ul {
   @apply pl-6;
-}
-
-li {
-  list-style-type: none;
-  position: relative;
-  padding-left: 0.5em;
-}
-
-li:before {
-  border-radius: 50%;
-  width: 3px;
-  height: 3px;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0.8em;
-  content: "";
-  background: #888
 }
 
 .markdown .math-inline {
@@ -98,8 +92,6 @@ li:before {
   position: relative;
   background: #272822;
   top: 10px;
-  border-top-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
   z-index: 2;
 }
 
@@ -109,8 +101,6 @@ li:before {
   font-family: "Fira Code", monospace;
   color: #eee;
   background: #777;
-  border-top-left-radius: 0.3em;
-  border-top-right-radius: 0.3em;
   padding: 3px;
   top: 1px;
 }

@@ -1,10 +1,10 @@
-import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
 import { ContentfulWork } from "../../types/graphql-types"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import WorkComponent from "../components/work"
 import Title from "../components/title"
+import WorkComponent from "../components/work"
 
 const WorksPage = () => {
   const { allContentfulWork } = useStaticQuery<{
@@ -33,7 +33,6 @@ const WorksPage = () => {
       }
     `
   )
-
   return (
     <Layout>
       <Seo />

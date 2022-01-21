@@ -1,10 +1,10 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React, { ReactNode } from "react"
-import "../utils/global.css"
-import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
 import { Site } from "../../types/graphql-types"
-import Seo from "./seo"
+import "../utils/global.css"
 import Footer from "./footer"
+import Header from "./header"
+import Seo from "./seo"
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const { site } = useStaticQuery<{ site: Site }>(graphql`

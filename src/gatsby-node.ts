@@ -2,7 +2,7 @@ import { CreatePagesArgs, GatsbyNode } from "gatsby"
 import path from "path"
 import {
   MarkdownRemark,
-  MarkdownRemarkConnection
+  MarkdownRemarkConnection,
 } from "../types/graphql-types"
 import { Entry } from "./model"
 import { PostPageProps } from "./templates/post"
