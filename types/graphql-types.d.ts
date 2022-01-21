@@ -57,6 +57,7 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
+  gitRemote?: Maybe<GitRemote>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -876,6 +877,32 @@ export type ContentfulWorkDescriptionTextNodeSys = {
   type?: Maybe<Scalars['String']>;
 };
 
+export type GitRemote = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  protocols?: Maybe<Array<Maybe<Scalars['String']>>>;
+  protocol?: Maybe<Scalars['String']>;
+  resource?: Maybe<Scalars['String']>;
+  user?: Maybe<Scalars['String']>;
+  pathname?: Maybe<Scalars['String']>;
+  hash?: Maybe<Scalars['String']>;
+  search?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+  token?: Maybe<Scalars['String']>;
+  source?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  owner?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  filepathtype?: Maybe<Scalars['String']>;
+  filepath?: Maybe<Scalars['String']>;
+  organization?: Maybe<Scalars['String']>;
+  full_name?: Maybe<Scalars['String']>;
+  webLink?: Maybe<Scalars['String']>;
+  sourceInstanceName?: Maybe<Scalars['String']>;
+};
+
 export type ContentfulContentType = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -918,6 +945,8 @@ export type Query = {
   allMarkdownRemark: MarkdownRemarkConnection;
   contentfulWorkDescriptionTextNode?: Maybe<ContentfulWorkDescriptionTextNode>;
   allContentfulWorkDescriptionTextNode: ContentfulWorkDescriptionTextNodeConnection;
+  gitRemote?: Maybe<GitRemote>;
+  allGitRemote: GitRemoteConnection;
   contentfulContentType?: Maybe<ContentfulContentType>;
   allContentfulContentType: ContentfulContentTypeConnection;
 };
@@ -957,6 +986,7 @@ export type QueryFileArgs = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  gitRemote?: InputMaybe<GitRemoteFilterInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -1275,6 +1305,41 @@ export type QueryAllContentfulWorkDescriptionTextNodeArgs = {
 };
 
 
+export type QueryGitRemoteArgs = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  protocols?: InputMaybe<StringQueryOperatorInput>;
+  protocol?: InputMaybe<StringQueryOperatorInput>;
+  resource?: InputMaybe<StringQueryOperatorInput>;
+  user?: InputMaybe<StringQueryOperatorInput>;
+  pathname?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  search?: InputMaybe<StringQueryOperatorInput>;
+  href?: InputMaybe<StringQueryOperatorInput>;
+  token?: InputMaybe<StringQueryOperatorInput>;
+  source?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  owner?: InputMaybe<StringQueryOperatorInput>;
+  ref?: InputMaybe<StringQueryOperatorInput>;
+  filepathtype?: InputMaybe<StringQueryOperatorInput>;
+  filepath?: InputMaybe<StringQueryOperatorInput>;
+  organization?: InputMaybe<StringQueryOperatorInput>;
+  full_name?: InputMaybe<StringQueryOperatorInput>;
+  webLink?: InputMaybe<StringQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllGitRemoteArgs = {
+  filter?: InputMaybe<GitRemoteFilterInput>;
+  sort?: InputMaybe<GitRemoteSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulContentTypeArgs = {
   id?: InputMaybe<StringQueryOperatorInput>;
   parent?: InputMaybe<NodeFilterInput>;
@@ -1334,6 +1399,61 @@ export type FloatQueryOperatorInput = {
   lte?: InputMaybe<Scalars['Float']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   nin?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+export type GitRemoteFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  protocols?: InputMaybe<StringQueryOperatorInput>;
+  protocol?: InputMaybe<StringQueryOperatorInput>;
+  resource?: InputMaybe<StringQueryOperatorInput>;
+  user?: InputMaybe<StringQueryOperatorInput>;
+  pathname?: InputMaybe<StringQueryOperatorInput>;
+  hash?: InputMaybe<StringQueryOperatorInput>;
+  search?: InputMaybe<StringQueryOperatorInput>;
+  href?: InputMaybe<StringQueryOperatorInput>;
+  token?: InputMaybe<StringQueryOperatorInput>;
+  source?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  owner?: InputMaybe<StringQueryOperatorInput>;
+  ref?: InputMaybe<StringQueryOperatorInput>;
+  filepathtype?: InputMaybe<StringQueryOperatorInput>;
+  filepath?: InputMaybe<StringQueryOperatorInput>;
+  organization?: InputMaybe<StringQueryOperatorInput>;
+  full_name?: InputMaybe<StringQueryOperatorInput>;
+  webLink?: InputMaybe<StringQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type NodeFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type NodeFilterListInput = {
+  elemMatch?: InputMaybe<NodeFilterInput>;
+};
+
+export type InternalFilterInput = {
+  content?: InputMaybe<StringQueryOperatorInput>;
+  contentDigest?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
+  fieldOwners?: InputMaybe<StringQueryOperatorInput>;
+  ignoreType?: InputMaybe<BooleanQueryOperatorInput>;
+  mediaType?: InputMaybe<StringQueryOperatorInput>;
+  owner?: InputMaybe<StringQueryOperatorInput>;
+  type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type BooleanQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['Boolean']>;
+  ne?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
 };
 
 export type ImageSharpFilterListInput = {
@@ -1402,35 +1522,6 @@ export type ImageSharpResizeFilterInput = {
   height?: InputMaybe<IntQueryOperatorInput>;
   aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
   originalName?: InputMaybe<StringQueryOperatorInput>;
-};
-
-export type NodeFilterInput = {
-  id?: InputMaybe<StringQueryOperatorInput>;
-  parent?: InputMaybe<NodeFilterInput>;
-  children?: InputMaybe<NodeFilterListInput>;
-  internal?: InputMaybe<InternalFilterInput>;
-};
-
-export type NodeFilterListInput = {
-  elemMatch?: InputMaybe<NodeFilterInput>;
-};
-
-export type InternalFilterInput = {
-  content?: InputMaybe<StringQueryOperatorInput>;
-  contentDigest?: InputMaybe<StringQueryOperatorInput>;
-  description?: InputMaybe<StringQueryOperatorInput>;
-  fieldOwners?: InputMaybe<StringQueryOperatorInput>;
-  ignoreType?: InputMaybe<BooleanQueryOperatorInput>;
-  mediaType?: InputMaybe<StringQueryOperatorInput>;
-  owner?: InputMaybe<StringQueryOperatorInput>;
-  type?: InputMaybe<StringQueryOperatorInput>;
-};
-
-export type BooleanQueryOperatorInput = {
-  eq?: InputMaybe<Scalars['Boolean']>;
-  ne?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
-  nin?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
 };
 
 export type MarkdownRemarkFilterListInput = {
@@ -1566,6 +1657,63 @@ export type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
+  | 'gitRemote___id'
+  | 'gitRemote___parent___id'
+  | 'gitRemote___parent___parent___id'
+  | 'gitRemote___parent___parent___children'
+  | 'gitRemote___parent___children'
+  | 'gitRemote___parent___children___id'
+  | 'gitRemote___parent___children___children'
+  | 'gitRemote___parent___internal___content'
+  | 'gitRemote___parent___internal___contentDigest'
+  | 'gitRemote___parent___internal___description'
+  | 'gitRemote___parent___internal___fieldOwners'
+  | 'gitRemote___parent___internal___ignoreType'
+  | 'gitRemote___parent___internal___mediaType'
+  | 'gitRemote___parent___internal___owner'
+  | 'gitRemote___parent___internal___type'
+  | 'gitRemote___children'
+  | 'gitRemote___children___id'
+  | 'gitRemote___children___parent___id'
+  | 'gitRemote___children___parent___children'
+  | 'gitRemote___children___children'
+  | 'gitRemote___children___children___id'
+  | 'gitRemote___children___children___children'
+  | 'gitRemote___children___internal___content'
+  | 'gitRemote___children___internal___contentDigest'
+  | 'gitRemote___children___internal___description'
+  | 'gitRemote___children___internal___fieldOwners'
+  | 'gitRemote___children___internal___ignoreType'
+  | 'gitRemote___children___internal___mediaType'
+  | 'gitRemote___children___internal___owner'
+  | 'gitRemote___children___internal___type'
+  | 'gitRemote___internal___content'
+  | 'gitRemote___internal___contentDigest'
+  | 'gitRemote___internal___description'
+  | 'gitRemote___internal___fieldOwners'
+  | 'gitRemote___internal___ignoreType'
+  | 'gitRemote___internal___mediaType'
+  | 'gitRemote___internal___owner'
+  | 'gitRemote___internal___type'
+  | 'gitRemote___protocols'
+  | 'gitRemote___protocol'
+  | 'gitRemote___resource'
+  | 'gitRemote___user'
+  | 'gitRemote___pathname'
+  | 'gitRemote___hash'
+  | 'gitRemote___search'
+  | 'gitRemote___href'
+  | 'gitRemote___token'
+  | 'gitRemote___source'
+  | 'gitRemote___name'
+  | 'gitRemote___owner'
+  | 'gitRemote___ref'
+  | 'gitRemote___filepathtype'
+  | 'gitRemote___filepath'
+  | 'gitRemote___organization'
+  | 'gitRemote___full_name'
+  | 'gitRemote___webLink'
+  | 'gitRemote___sourceInstanceName'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp___fixed___base64'
@@ -1983,6 +2131,7 @@ export type FileFilterInput = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  gitRemote?: InputMaybe<GitRemoteFilterInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -5035,6 +5184,204 @@ export type ContentfulWorkDescriptionTextNodeGroupConnectionGroupArgs = {
 
 export type ContentfulWorkDescriptionTextNodeSortInput = {
   fields?: InputMaybe<Array<InputMaybe<ContentfulWorkDescriptionTextNodeFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type GitRemoteConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<GitRemoteEdge>;
+  nodes: Array<GitRemote>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GitRemoteGroupConnection>;
+};
+
+
+export type GitRemoteConnectionDistinctArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteConnectionMaxArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteConnectionMinArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteConnectionSumArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: GitRemoteFieldsEnum;
+};
+
+export type GitRemoteEdge = {
+  next?: Maybe<GitRemote>;
+  node: GitRemote;
+  previous?: Maybe<GitRemote>;
+};
+
+export type GitRemoteFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'protocols'
+  | 'protocol'
+  | 'resource'
+  | 'user'
+  | 'pathname'
+  | 'hash'
+  | 'search'
+  | 'href'
+  | 'token'
+  | 'source'
+  | 'name'
+  | 'owner'
+  | 'ref'
+  | 'filepathtype'
+  | 'filepath'
+  | 'organization'
+  | 'full_name'
+  | 'webLink'
+  | 'sourceInstanceName';
+
+export type GitRemoteGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<GitRemoteEdge>;
+  nodes: Array<GitRemote>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GitRemoteGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type GitRemoteGroupConnectionDistinctArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteGroupConnectionMaxArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteGroupConnectionMinArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteGroupConnectionSumArgs = {
+  field: GitRemoteFieldsEnum;
+};
+
+
+export type GitRemoteGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: GitRemoteFieldsEnum;
+};
+
+export type GitRemoteSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<GitRemoteFieldsEnum>>>;
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 

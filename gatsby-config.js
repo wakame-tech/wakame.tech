@@ -1,11 +1,11 @@
-require("dotenv").config();
+require("dotenv").config()
 
 const siteMetadata = {
   title: `自己否定感`,
   author: "wakame_tech",
   description: "noop",
   ogpImageUrl: "https://i.imgur.com/hnDPgbO.png",
-};
+}
 
 const plugins = [
   {
@@ -56,25 +56,26 @@ const plugins = [
       anonymize: true,
     },
   },
-  // from remote
-  // {
-  //   resolve: `gatsby-source-git`,
-  //   options: {
-  //     name: `blog-articles`,
-  //     remote: `https://github.com/wakame-tech/blog-articles.git`,
-  //     branch: `main`,
-  //     patterns: `blog/**`,
-  //   },
-  // },
-  // from local
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `data`,
-      path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
-      // ignore: [`**/*.md`],
-    },
-  },
+  process.env.NODE_ENV === "production"
+    ? // from remote
+      {
+        resolve: `gatsby-source-git`,
+        options: {
+          name: `blog-articles`,
+          remote: `https://github.com/wakame-tech/blog-articles.git`,
+          branch: `main`,
+          patterns: `blog/**`,
+        },
+      }
+    : // from local
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `data`,
+          path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
+          // ignore: [`**/*.md`],
+        },
+      },
   {
     resolve: `gatsby-plugin-create-client-paths`,
     options: { prefixes: [`/src/pages/*`] },
@@ -119,9 +120,9 @@ const plugins = [
   //     ],
   //   },
   // },
-];
+]
 
 module.exports = {
   siteMetadata,
   plugins,
-};
+}
