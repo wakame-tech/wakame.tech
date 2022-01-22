@@ -5,4 +5,5 @@
  */
 
 // You can delete this file if you're not using it
-import "katex/dist/katex.min.css";
+import "katex/dist/katex.min.css"
+import "prismjs/themes/prism.css"

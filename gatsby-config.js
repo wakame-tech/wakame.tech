@@ -81,45 +81,22 @@ const plugins = [
     options: { prefixes: [`/src/pages/*`] },
   },
   {
-    resolve: `gatsby-remark-prismjs`,
+    resolve: `gatsby-transformer-remark`,
     options: {
-      classPrefix: "language-",
-      inlineCodeMarker: null,
-      aliases: {},
-      showLineNumbers: true,
-      noInlineHighlight: false,
+      plugins: [
+        `gatsby-remark-katex`,
+        `gatsby-remark-prismjs-title`,
+        {
+          resolve: `gatsby-remark-prismjs`,
+          options: {
+            showLineNumbers: true,
+            noInlineHighlight: false,
+          },
+        },
+      ],
     },
   },
-  `gatsby-transformer-remark`,
-  // {
-  //   resolve: `gatsby-transformer-remark`,
-  //   options: {
-  //     footnodes: false,
-  //     plugins: [
-  //       {
-  //         resolve: `gatsby-remark-katex`,
-  //         options: {
-  //           // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-  //           strict: `ignore`,
-  //         },
-  //       },
-  //       `@weknow/gatsby-remark-twitter`,
-  //       {
-  //         resolve: `gatsby-remark-prismjs-title`,
-  //         options: {
-  //           className: "gatsby-code-title",
-  //         },
-  //       },
-  //       {
-  //         resolve: `gatsby-remark-prismjs`,
-  //         options: {
-  //           showLineNumbers: true,
-  //           noInlineHighlight: false,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // },
+  `gatsby-plugin-twitter`,
 ]
 
 module.exports = {

@@ -71,6 +71,7 @@ a:hover {
 }
 
 .markdown .math-inline {
+  @apply inline;
   text-align: center;
 }
 
@@ -80,38 +81,4 @@ a:hover {
 
 .code * {
   font-family: "Fira Code", monospace;
-}
-
-.markdown .grvsc-container {
-  @apply my-2;
-  z-index: 1;
-}
-
-.markdown .gatsby-code-title {
-  display: block;
-  position: relative;
-  background: #272822;
-  top: 10px;
-  z-index: 2;
-}
-
-.markdown .gatsby-code-title span {
-  display: inline;
-  position: relative;
-  font-family: "Fira Code", monospace;
-  color: #eee;
-  background: #777;
-  padding: 3px;
-  top: 1px;
-}
-
-.markdown .gatsby-highlight-code-line {
-  background-color: #444444;
-  font-family: "Fira Code", monospace;
-  display: block;
-  margin-right: -1em;
-  margin-left: -16px;
-  padding-right: 1em;
-  padding-left: 10px;
-  border-left: 6px solid rgb(102, 207, 255);
 }
