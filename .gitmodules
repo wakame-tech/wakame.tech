@@ -1,4 +1,0 @@
-[submodule "blog-articles"]
-	path = blog-articles
-	url = https://github.com/wakame-tech/blog-articles
-	branch = main

@@ -56,26 +56,14 @@ const plugins = [
       anonymize: true,
     },
   },
-  process.env.NODE_ENV === "production"
-    ? // from remote
-      {
-        resolve: `gatsby-source-git`,
-        options: {
-          name: `blog-articles`,
-          remote: `https://github.com/wakame-tech/blog-articles.git`,
-          branch: `main`,
-          patterns: `blog/**`,
-        },
-      }
-    : // from local
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `data`,
-          path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
-          // ignore: [`**/*.md`],
-        },
-      },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `data`,
+      path: `${process.env.LOCAL_ARTICLE_PATH}`,
+      // ignore: [`**/*.md`],
+    },
+  },
   {
     resolve: `gatsby-plugin-create-client-paths`,
     options: { prefixes: [`/src/pages/*`] },
@@ -93,6 +81,14 @@ const plugins = [
             noInlineHighlight: false,
           },
         },
+        // {
+        //   resolve: "gatsby-remark-obsidian",
+        //   options: {
+        //     titleToURL: title => `/${title}`,
+        //     // markdownFolder: `${process.env.LOCAL_ARTICLE_PATH}`,
+        //     highlightClassName: "highlight",
+        //   },
+        // },
       ],
     },
   },
