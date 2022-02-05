@@ -1,8 +1,8 @@
 import { CreatePagesArgs, GatsbyNode } from "gatsby"
 import path from "path"
 import {
-  MarkdownRemark,
-  MarkdownRemarkConnection,
+  Mdx,
+  MdxConnection,
 } from "../types/graphql-types"
 import { Entry } from "./model"
 import { PostPageProps } from "./templates/post"
@@ -10,12 +10,12 @@ import { TagsPageProps } from "./templates/tagsPage"
 import { createPosts } from "./utils/RemarkNodeAdapter"
 import { slides } from "./utils/slides"
 
-const getAllMarkdownRemark = async (
+const getAllMdx = async (
   graphql: CreatePagesArgs["graphql"]
-): Promise<MarkdownRemark[]> => {
+): Promise<Mdx[]> => {
   const query = `
   {
-    allMarkdownRemark {
+    allMdx {
       nodes {
         id
         frontmatter {
@@ -23,21 +23,21 @@ const getAllMarkdownRemark = async (
           tags
           date(formatString: "YYYY-MM-DD")
         }
-        html
+        body
         fileAbsolutePath
       }
     }
   }
   `
 
-  const result = await graphql<{ allMarkdownRemark: MarkdownRemarkConnection }>(
+  const result = await graphql<{ allMdx: MdxConnection }>(
     query
   )
   if (result.errors || !result.data) {
     throw result.errors
   }
 
-  return result.data.allMarkdownRemark.nodes
+  return result.data.allMdx.nodes
 }
 
 const createPostPages = async ({
@@ -46,8 +46,9 @@ const createPostPages = async ({
 }: CreatePagesArgs & {
   traceId: "initial-createPages"
 }) => {
-  const nodes = await getAllMarkdownRemark(graphql)
-  const posts = createPosts(nodes).filter(post => !post.draft)
+  const nodes = await getAllMdx(graphql)
+  const posts = createPosts(nodes)
+    .filter(post => !post.draft)
 
   posts
     .filter(post => !post.fixed)
@@ -76,7 +77,7 @@ export const createTagPages = async ({
 }: CreatePagesArgs & {
   traceId: "initial-createPages"
 }) => {
-  const nodes = await getAllMarkdownRemark(graphql)
+  const nodes = await getAllMdx(graphql)
   const posts = createPosts(nodes).filter(post => !(post.fixed || post.draft))
   const entries = [...posts, ...slides]
   const entriesMap: Record<string, Entry[]> = {}

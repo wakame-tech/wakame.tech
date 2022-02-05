@@ -1,38 +1,39 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { ContentfulWork } from "../../types/graphql-types"
+import { ContentfulWork } from "../../types/graphql-types_"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Title from "../components/title"
 import WorkComponent from "../components/work"
 
 const WorksPage = () => {
-  const { allContentfulWork } = useStaticQuery<{
-    allContentfulWork: { nodes: ContentfulWork[] }
-  }>(
-    graphql`
-      {
-        allContentfulWork(sort: { fields: date, order: DESC }) {
-          nodes {
-            id
-            tags
-            title
-            url
-            description {
-              childMarkdownRemark {
-                html
-                rawMarkdownBody
-              }
-            }
-            date(formatString: "YYYY-MM-DD")
-            thumbnail {
-              gatsbyImageData(aspectRatio: 1.7, quality: 100)
-            }
-          }
-        }
-      }
-    `
-  )
+  const allContentfulWork = { nodes: [] as ContentfulWork[] };
+  // const { allContentfulWork } = useStaticQuery<{
+  //   allContentfulWork: { nodes: ContentfulWork[] }
+  // }>(
+  //   graphql`
+  //     {
+  //       allContentfulWork(sort: { fields: date, order: DESC }) {
+  //         nodes {
+  //           id
+  //           tags
+  //           title
+  //           url
+  //           description {
+  //             childMarkdownRemark {
+  //               html
+  //               rawMarkdownBody
+  //             }
+  //           }
+  //           date(formatString: "YYYY-MM-DD")
+  //           thumbnail {
+  //             gatsbyImageData(aspectRatio: 1.7, quality: 100)
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
   return (
     <Layout>
       <Seo />

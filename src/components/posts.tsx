@@ -1,15 +1,15 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { MarkdownRemarkConnection } from "../../types/graphql-types"
+import { MdxConnection } from "../../types/graphql-types"
 import { createPosts } from "../utils/RemarkNodeAdapter"
 import EntryRow from "./entry_row"
 
 const Posts = () => {
-  const { allMarkdownRemark } = useStaticQuery<{
-    allMarkdownRemark: MarkdownRemarkConnection
+  const { allMdx } = useStaticQuery<{
+    allMdx: MdxConnection
   }>(graphql`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+      allMdx(sort: { order: DESC, fields: frontmatter___date }) {
         nodes {
           id
           frontmatter {
@@ -23,7 +23,7 @@ const Posts = () => {
     }
   `)
 
-  const posts = createPosts(allMarkdownRemark.nodes).filter(
+  const posts = createPosts(allMdx.nodes).filter(
     post => !post.draft && !post.fixed
   )
 

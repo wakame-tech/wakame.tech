@@ -1,4 +1,4 @@
-require("dotenv").config()
+require('dotenv').config();
 
 const siteMetadata = {
   title: `自己否定感`,
@@ -17,22 +17,8 @@ const plugins = [
       codegenConfig: { maybeValue: "T | undefined" },
     },
   },
-  {
-    resolve: `gatsby-source-contentful`,
-    options: {
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    },
-  },
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-image`,
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `images`,
-      path: `${__dirname}/src/images`,
-    },
-  },
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   {
@@ -47,7 +33,6 @@ const plugins = [
       icon: `src/images/favicon-32x32.png`, // This path is relative to the root of the site.
     },
   },
-  `gatsby-plugin-gatsby-cloud`,
   {
     resolve: `gatsby-plugin-google-analytics`,
     options: {
@@ -59,19 +44,18 @@ const plugins = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-      name: `data`,
+      name: `blog`,
       path: `${process.env.LOCAL_ARTICLE_PATH}`,
-      // ignore: [`**/*.md`],
     },
   },
   {
-    resolve: `gatsby-plugin-create-client-paths`,
-    options: { prefixes: [`/src/pages/*`] },
-  },
-  {
-    resolve: `gatsby-transformer-remark`,
+    resolve: `gatsby-plugin-mdx`,
     options: {
-      plugins: [
+      extensions: [`.mdx`, `.md`],
+      gatsbyRemarkPlugins: [
+        {
+          resolve: `gatsby-remark-wiki-link`,
+        },
         `gatsby-remark-katex`,
         `gatsby-remark-prismjs-title`,
         {
@@ -81,21 +65,18 @@ const plugins = [
             noInlineHighlight: false,
           },
         },
-        // {
-        //   resolve: "gatsby-remark-obsidian",
-        //   options: {
-        //     titleToURL: title => `/${title}`,
-        //     // markdownFolder: `${process.env.LOCAL_ARTICLE_PATH}`,
-        //     highlightClassName: "highlight",
-        //   },
-        // },
       ],
     },
   },
-  `gatsby-plugin-twitter`,
+  // `gatsby-plugin-twitter`,
 ]
 
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+    FAST_REFRESH: true,
+    QUERY_ON_DEMAND: true,
+  },
   siteMetadata,
   plugins,
 }

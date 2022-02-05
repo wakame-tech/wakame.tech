@@ -1,3 +1,4 @@
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import Layout from "../components/layout"
 import Tags from "../components/tags"
@@ -24,12 +25,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
           </div>
         </header>
 
-        <div>
-          <section
-            className="markdown"
-            dangerouslySetInnerHTML={{ __html: post.html ?? "" }}
-          />
-        </div>
+        <MDXRenderer>{post.body}</MDXRenderer>
       </article>
     </Layout>
   )

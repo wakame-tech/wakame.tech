@@ -5,9 +5,4 @@
   <img src="https://i.imgur.com/hnDPgbO.png" />
 </div>
 
-🎨 4th portfolio. (WIP) 
-
-## TODO
-- [x] setup Gatsby.js
-- [x] setup Contentful
-- [x] OGP
+🎨 4th portfolio.

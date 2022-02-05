@@ -1,16 +1,16 @@
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import React from "react"
-import { ContentfulWork } from "../../types/graphql-types"
+// import { ContentfulWork } from "../../types/graphql-types"
 import Tags from "./tags"
 
-const WorkComponent = (props: { work: ContentfulWork }) => {
+const WorkComponent = (props: { work: any }) => {
   return (
     <div className="bg-white shadow-md h-full">
       <div className="h-2/5">
         {props.work.thumbnail ? (
           <GatsbyImage
             className="object-cover h-full w-full"
-            image={getImage(props.work.thumbnail.gatsbyImageData)!}
+            image={getImage(props.work.thumbnail.gatsbyImageData)}
             alt=""
           />
         ) : (

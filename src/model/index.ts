@@ -10,5 +10,5 @@ export type Entry = {
 }
 
 export type Post = Entry & {
-  html: string
+  body: string
 }

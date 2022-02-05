@@ -1,4 +1,4 @@
-import { MarkdownRemark } from "../../types/graphql-types_"
+import { Maybe, Mdx } from "../../types/graphql-types"
 import { Post } from "../model"
 
 const basename = (filePath: string): string => {
@@ -7,7 +7,7 @@ const basename = (filePath: string): string => {
   return fileName.split(".")[0]
 }
 
-export const createPost = (node: MarkdownRemark): Post | null => {
+export const createPost = (node: Mdx): Maybe<Post> => {
   if (
     !node.fileAbsolutePath ||
     !node.frontmatter ||
@@ -16,7 +16,7 @@ export const createPost = (node: MarkdownRemark): Post | null => {
     !node.frontmatter.tags
   ) {
     // `${node.id} ${node.fileAbsolutePath} frontmatter not found`
-    return null
+    return undefined
   }
 
   const fm = node.frontmatter
@@ -27,15 +27,15 @@ export const createPost = (node: MarkdownRemark): Post | null => {
   return {
     id: node.id,
     to: `/posts/${fileBaseName}`,
-    title: fm.title!,
+    title: fm.title,
     tags: fm.tags as string[],
     date: fm.date,
     draft: includeDraftTag,
     fixed: includeFixedTag,
-    html: node.html!,
+    body: node.body,
   }
 }
 
-export const createPosts = (nodes: MarkdownRemark[]): Post[] => {
+export const createPosts = (nodes: Mdx[]): Post[] => {
   return nodes.map(createPost).filter((post): post is Post => !!post)
 }

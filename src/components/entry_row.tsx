@@ -8,13 +8,14 @@ export type EntryRowProps = {
 
 const EntryRow = ({ entry }: EntryRowProps) => {
   return (
-    <li>
+    <li className="pb-1">
       <span className="pr-2 text-gray-600">{entry.date}</span>
+      <span className="pr-1">
+        [{entry.tags.map(tag => `#${tag}`).join(" ")}]
+      </span>
+      <br />
       <Link to={entry.to}>
-        <span className="pr-1">
-          [{entry.tags.map(tag => `#${tag}`).join(" ")}]
-        </span>
-        <span>{entry.title}</span>
+        <span className="text-lg">{entry.title}</span>
       </Link>
     </li>
   )
