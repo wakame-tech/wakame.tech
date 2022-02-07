@@ -14,7 +14,7 @@ const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
 
   return (
     <Layout>
-      <Seo />
+      <Seo title="Tags" />
 
       <article className="p-2">
         <header>

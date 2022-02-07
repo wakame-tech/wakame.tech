@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import { Site } from "../../types/graphql-types"
 
 type Props = {
-  title?: string
+  title: string
 }
 
 const Seo = (props: Props) => {

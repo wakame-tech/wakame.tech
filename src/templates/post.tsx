@@ -15,7 +15,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
 
   return (
     <Layout>
-      <Seo title={`${post.title}`} />
+      <Seo title={post.title} />
       <article>
         <header>
           <div className="">

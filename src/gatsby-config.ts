@@ -7,7 +7,7 @@ const siteMetadata: GatsbyConfig["siteMetadata"] = {
   title: `自己否定感`,
   author: "wakame_tech",
   description: "noop",
-  ogpImageUrl: "https://i.imgur.com/hnDPgbO.png",
+  ogpImageUrl: "https://i.imgur.com/yfCPFXf.png",
 }
 
 const plugins: GatsbyConfig["plugins"] = [

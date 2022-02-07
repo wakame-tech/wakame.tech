@@ -4,7 +4,6 @@ import { Site } from "../../types/graphql-types"
 import "../utils/global.css"
 import Footer from "./footer"
 import Header from "./header"
-import Seo from "./seo"
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const { site } = useStaticQuery<{ site: Site }>(graphql`
@@ -21,8 +20,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Seo />
-
       <div className="flex flex-col min-h-screen">
         <Header
           siteTitle={site?.siteMetadata?.title ?? ""}
