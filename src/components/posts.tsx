@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { MdxConnection } from "../../types/graphql-types"
-import { createPosts } from "../utils/RemarkNodeAdapter"
+import { createPosts } from "../utils/MdxAdapter"
 import EntryRow from "./entry_row"
 
 const Posts = () => {

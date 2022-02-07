@@ -1,6 +1,7 @@
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
 import Tags from "../components/tags"
 import Title from "../components/title"
 import { Post } from "../model"
@@ -14,6 +15,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
 
   return (
     <Layout>
+      <Seo title={`${post.title}`} />
       <article>
         <header>
           <div className="">

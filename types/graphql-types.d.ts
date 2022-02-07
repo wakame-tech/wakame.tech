@@ -606,6 +606,8 @@ export type ImageSharpResize = {
   originalName?: Maybe<Scalars['String']>;
 };
 
+export type ReferenceTarget = Mdx;
+
 export type MdxFrontmatter = {
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
@@ -653,6 +655,8 @@ export type Mdx = Node & {
   tableOfContents?: Maybe<Scalars['JSON']>;
   timeToRead?: Maybe<Scalars['Int']>;
   wordCount?: Maybe<MdxWordCount>;
+  outboundReferences: Array<ReferenceTarget>;
+  inboundReferences: Array<ReferenceTarget>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;

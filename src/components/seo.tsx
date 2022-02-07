@@ -24,13 +24,13 @@ const Seo = (props: Props) => {
   )
 
   const metaDescription = site?.siteMetadata?.description ?? ""
-  const title = site?.siteMetadata?.title ?? props.title ?? ""
+  const pageTitle = `${props.title} | ${site?.siteMetadata?.title}`
   const ogpImageUrl = site?.siteMetadata?.ogpImageUrl ?? ""
 
   return (
     <Helmet
       htmlAttributes={{ lang: "ja" }}
-      title={title}
+      title={pageTitle}
       meta={[
         {
           name: `description`,
@@ -38,7 +38,7 @@ const Seo = (props: Props) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `og:image`,
@@ -58,7 +58,7 @@ const Seo = (props: Props) => {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `twitter:image`,

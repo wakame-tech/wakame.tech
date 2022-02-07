@@ -1,4 +1,4 @@
-import { Maybe, Mdx } from "../../types/graphql-types"
+import { Maybe, Mdx } from "../../types/graphql-types_"
 import { Post } from "../model"
 
 const basename = (filePath: string): string => {

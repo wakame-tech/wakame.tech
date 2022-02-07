@@ -1,4 +1,4 @@
-export type MarkdownRemark = any
-export type MarkdownRemarkConnection = any
+export type Mdx = any
+export type MdxConnection = any
 export type Site = any
-export type ContentfulWork = any
+export type Maybe<T> = any
