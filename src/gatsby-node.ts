@@ -1,13 +1,10 @@
 import { CreatePagesArgs, GatsbyNode } from "gatsby"
 import path from "path"
-import {
-  Mdx,
-  MdxConnection,
-} from "../types/graphql-types"
+import { Mdx, MdxConnection } from "../types/graphql-types"
 import { Entry } from "./model"
 import { PostPageProps } from "./templates/post"
 import { TagsPageProps } from "./templates/tagsPage"
-import { createPosts } from "./utils/RemarkNodeAdapter"
+import { createPosts } from "./utils/MdxAdapter"
 import { slides } from "./utils/slides"
 
 const getAllMdx = async (
@@ -30,9 +27,7 @@ const getAllMdx = async (
   }
   `
 
-  const result = await graphql<{ allMdx: MdxConnection }>(
-    query
-  )
+  const result = await graphql<{ allMdx: MdxConnection }>(query)
   if (result.errors || !result.data) {
     throw result.errors
   }
@@ -47,8 +42,7 @@ const createPostPages = async ({
   traceId: "initial-createPages"
 }) => {
   const nodes = await getAllMdx(graphql)
-  const posts = createPosts(nodes)
-    .filter(post => !post.draft)
+  const posts = createPosts(nodes).filter(post => !post.draft)
 
   posts
     .filter(post => !post.fixed)

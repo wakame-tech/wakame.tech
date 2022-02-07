@@ -1,9 +1,6 @@
-'use strict'
-const path = require('path')
-require('ts-node').register({
-    compilerOptions: {
-        module: 'commonjs',
-        target: 'esnext',
-    },
+const { register } = require("esbuild-register/dist/node")
+register({
+  target: "node16",
 })
-exports.createPages = require(path.resolve(__dirname, 'src/gatsby-node')).createPages
+
+exports.createPages = require("./src/gatsby-node").createPages
