@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 h1,
 h2,
 h3,
@@ -15,35 +11,35 @@ ol {
   /* font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif; */
 }
 
-.markdown h1 {
+h1 {
   @apply pt-4;
   @apply text-2xl;
   @apply font-bold;
   @apply text-black;
 }
 
-.markdown h2 {
+h2 {
   @apply pt-4;
   @apply text-xl;
   @apply font-bold;
   @apply text-black;
 }
 
-.markdown h3 {
+h3 {
   @apply pt-4;
   @apply text-lg;
   @apply font-bold;
   @apply text-black;
 }
 
-.markdown h4 {
+h4 {
   @apply pt-2;
   @apply text-lg;
   @apply font-bold;
   @apply text-black;
 }
 
-.markdown p {
+p {
   @apply leading-tight;
   @apply text-gray-600;
 }
@@ -56,21 +52,21 @@ a:hover {
   @apply underline;
 }
 
-.markdown img {
+img {
   @apply m-auto;
   @apply py-2;
   max-width: 80%;
 }
 
-.markdown ol {
+ol {
   @apply list-decimal pl-6;
 }
 
-.markdown ul {
+ul {
   @apply pl-6;
 }
 
-.markdown .math-inline {
+.math-inline {
   @apply inline;
   text-align: center;
 }
@@ -79,6 +75,6 @@ a:hover {
 
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
-.code * {
+code * {
   font-family: "Fira Code", monospace;
 }
