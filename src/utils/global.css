@@ -56,10 +56,11 @@ img {
   @apply m-auto;
   @apply py-2;
   max-width: 80%;
+  height: auto;
 }
 
-ol {
-  @apply list-decimal pl-6;
+ul li {
+  @apply list-disc;
 }
 
 ul {
@@ -69,6 +70,19 @@ ul {
 .math-inline {
   @apply inline;
   text-align: center;
+}
+
+blockquote * {
+  @apply text-gray-400;
+  @apply border-left-4 border-gray-400 pl-4;
+}
+
+table {
+  @apply table-auto;
+}
+
+th, td {
+  @apply border-b-2 px-4 py-2 m-0;
 }
 
 /* code */

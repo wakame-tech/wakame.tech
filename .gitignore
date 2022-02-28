@@ -72,3 +72,5 @@ blog-articles/
 link-cache/
 # Local Netlify folder
 .netlify
+
+.vscode

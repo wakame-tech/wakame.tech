@@ -57,6 +57,7 @@ export type File = Node & {
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
+  url?: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -247,6 +248,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   flags?: Maybe<SiteFlags>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
@@ -612,7 +615,6 @@ export type MdxFrontmatter = {
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
 };
 
 
@@ -735,6 +737,7 @@ export type QueryFileArgs = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -805,6 +808,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
   flags?: InputMaybe<SiteFlagsFilterInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
@@ -1126,7 +1131,6 @@ export type MdxFrontmatterFilterInput = {
   title?: InputMaybe<StringQueryOperatorInput>;
   date?: InputMaybe<DateQueryOperatorInput>;
   tags?: InputMaybe<StringQueryOperatorInput>;
-  slug?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type MdxHeadingMdxFilterListInput = {
@@ -1233,6 +1237,7 @@ export type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
+  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp___fixed___base64'
@@ -1381,7 +1386,6 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___title'
   | 'childrenMdx___frontmatter___date'
   | 'childrenMdx___frontmatter___tags'
-  | 'childrenMdx___frontmatter___slug'
   | 'childrenMdx___slug'
   | 'childrenMdx___body'
   | 'childrenMdx___excerpt'
@@ -1438,7 +1442,6 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___title'
   | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___tags'
-  | 'childMdx___frontmatter___slug'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -1652,6 +1655,7 @@ export type FileFilterInput = {
   birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
   blksize?: InputMaybe<IntQueryOperatorInput>;
   blocks?: InputMaybe<IntQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
   publicURL?: InputMaybe<StringQueryOperatorInput>;
   childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
   childImageSharp?: InputMaybe<ImageSharpFilterInput>;
@@ -1984,6 +1988,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___author'
   | 'siteMetadata___ogpImageUrl'
+  | 'port'
+  | 'host'
   | 'flags___FAST_DEV'
   | 'flags___FAST_REFRESH'
   | 'flags___QUERY_ON_DEMAND'
@@ -2121,6 +2127,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
   flags?: InputMaybe<SiteFlagsFilterInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
@@ -3236,7 +3244,6 @@ export type MdxFieldsEnum =
   | 'frontmatter___title'
   | 'frontmatter___date'
   | 'frontmatter___tags'
-  | 'frontmatter___slug'
   | 'slug'
   | 'body'
   | 'excerpt'
