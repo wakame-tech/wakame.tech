@@ -23,7 +23,7 @@ const routes = [
 
 const Header = ({ siteTitle, siteDescription }: Props) => {
   return (
-    <div className="pt-4 bg-light-50">
+    <div className="p-3 bg-white dark:bg-dark-800">
       <div className="flex flex-wrap sm:flex-row items-end">
         <div className="px-2">
           <Link

@@ -5,7 +5,9 @@ const Tags = (props: { tags: string[] }) => {
     <div>
       {props.tags.map(tag => (
         <div key={tag} className="px-1 py-1 mr-1 inline-block">
-          <div className="text-blue-500 font-bold text-xs">#{tag}</div>
+          <span className="text-blue-500 dark:text-blue-200 font-bold text-xs">
+            #{tag}
+          </span>
         </div>
       ))}
     </div>

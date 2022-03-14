@@ -26,7 +26,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
           siteDescription={site?.siteMetadata?.description ?? ""}
         />
 
-        <main className="flex-grow px-4 md:px-20 pb-10">{children}</main>
+        <main className="flex-grow px-4 md:px-20 pb-10 text-black dark:text-white bg-light-100 dark:bg-dark-700">
+          {children}
+        </main>
 
         <Footer siteAuthor={site?.siteMetadata?.author ?? ""} />
       </div>
