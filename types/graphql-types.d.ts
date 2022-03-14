@@ -3390,11 +3390,6 @@ export type MdxSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SiteTitleQueryQuery = { site?: { siteMetadata?: { title?: string | undefined, description?: string | undefined, author?: string | undefined } | undefined } | undefined };
-
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3403,7 +3398,17 @@ export type Unnamed_1_Query = { allMdx: { nodes: Array<{ id: string, fileAbsolut
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_2_Query = { site?: { siteMetadata?: { title?: string | undefined, author?: string | undefined, description?: string | undefined, ogpImageUrl?: string | undefined } | undefined } | undefined };
+export type Unnamed_2_Query = { allMdx: { nodes: Array<{ id: string, fileAbsolutePath: string, frontmatter?: { title: string, tags?: Array<string | undefined> | undefined, date?: any | undefined } | undefined }> } };
+
+export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SiteTitleQueryQuery = { site?: { siteMetadata?: { title?: string | undefined, description?: string | undefined, author?: string | undefined } | undefined } | undefined };
+
+export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_3_Query = { site?: { siteMetadata?: { title?: string | undefined, author?: string | undefined, description?: string | undefined, ogpImageUrl?: string | undefined } | undefined } | undefined };
 
 export type GatsbyImageSharpFixedFragment = { base64?: string | undefined, width: number, height: number, src: string, srcSet: string };
 

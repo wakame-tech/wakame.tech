@@ -49,7 +49,14 @@ const plugins: GatsbyConfig["plugins"] = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `blog`,
-      path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
+      path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH!}`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `images`,
+      path: `${__dirname}/${process.env.LOCAL_IMAGE_PATH!}`,
     },
   },
   {
