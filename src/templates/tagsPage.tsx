@@ -24,7 +24,9 @@ const TagsPage = ({ pageContext }: { pageContext: TagsPageProps }) => {
         {Object.entries(entriesMap).map(([tag, entries]) => {
           return (
             <div key={tag}>
-              <h2 className="pt-2 text-gray-800 text-lg font-bold">#{tag}</h2>
+              <h2 className="pt-2 text-gray-800 dark:text-white text-lg font-bold">
+                #{tag}
+              </h2>
 
               <ul className="list-none">
                 {entries
