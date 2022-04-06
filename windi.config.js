@@ -1,5 +1,5 @@
 export default {
-  darkMode: "media",
+  plugins: [require("daisyui")],
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   scan: {
     exclude: [

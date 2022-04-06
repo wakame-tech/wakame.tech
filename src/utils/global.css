@@ -11,38 +11,44 @@ ol {
   /* font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif; */
 }
 
+a {
+  @apply link link-accent;
+}
+
 h1 {
   @apply pt-4;
   @apply text-2xl;
   @apply font-bold;
+  @apply text-accent-content;
 }
 
 h2 {
   @apply pt-4;
   @apply text-xl;
   @apply font-bold;
+  @apply mb-3;
+  @apply text-accent-content;
 }
 
 h3 {
   @apply pt-4;
   @apply text-lg;
   @apply font-bold;
+  @apply mb-2;
+  @apply text-accent-content;
 }
 
 h4 {
   @apply pt-2;
   @apply text-lg;
   @apply font-bold;
+  @apply mb-1;
+  @apply text-accent-content;
 }
 
 p {
+  @apply text-neutral-content;
   @apply leading-tight;
-  @apply text-gray-600;
-  @apply dark: text-white;
-}
-
-a {
-  @apply text-blue-500;
 }
 
 a:hover {
@@ -57,11 +63,12 @@ img {
 }
 
 ul li {
+  @apply py-1;
   @apply list-disc;
 }
 
 ul {
-  @apply pl-6;
+  @apply pl-4;
 }
 
 .math-inline {
@@ -70,8 +77,9 @@ ul {
 }
 
 blockquote * {
-  @apply text-gray-400;
-  @apply border-left-4 border-gray-400 pl-4;
+  @apply text-neutral-content;
+  @apply border-accent;
+  @apply border-left-4 pl-4;
 }
 
 table {
@@ -86,6 +94,31 @@ th, td {
 
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
-code * {
+:not(pre)>code[class="language-text"] {
+  @apply p-1;
+  @apply text-md;
   font-family: "Fira Code", monospace;
+}
+
+.gatsby-highlight {
+  @apply mockup-code;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  @apply pl-4;
+}
+
+.gatsby-highlight {
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+  font-family: "Fira Code", monospace;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding: 0;
+  padding-left: 2.8em;
+  overflow: initial;
 }

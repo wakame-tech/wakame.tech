@@ -18,45 +18,51 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
     <Layout>
       <Seo title={post.title} />
       <article>
-        <header>
+        <header className="w-full">
           <div className="">
-            <time className="py-1 text-gray-500 text-sm">{post.date}</time>
-            <Title title={post.title} />
+            <time className="pt-1 text-info-content text-sm">{post.date}</time>
+            <h1 className="text-2xl text-primary-content">{post.title} </h1>
             <div className="py-1">
               <Tags tags={post.tags} />
             </div>
           </div>
         </header>
 
-        <div className="m-auto">
-          {post.outbounds.length !== 0 && (
-            <>
-              <h2>参照している記事</h2>
+        <div className="divider divider-horizontal"></div>
+
+        {post.outbounds.length !== 0 && (
+          <>
+            <div className="m-auto pb-8">
+              <h3>参照している記事</h3>
 
               <ul className="list-none">
                 {post.outbounds.map(entry => (
                   <EntryRow key={entry.id} entry={entry} />
                 ))}
               </ul>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
+
+        <div className="divider divider-horizontal"></div>
 
         <MDXRenderer>{post.body}</MDXRenderer>
 
-        <div className="m-auto">
-          {post.inbounds.length !== 0 && (
-            <>
-              <h2>参照されている記事</h2>
+        <div className="divider divider-horizontal"></div>
+
+        {post.inbounds.length !== 0 && (
+          <>
+            <div className="m-auto pt-8">
+              <h3 className="">参照されている記事</h3>
 
               <ul className="list-none">
                 {post.inbounds.map(entry => (
                   <EntryRow key={entry.id} entry={entry} />
                 ))}
               </ul>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </article>
     </Layout>
   )

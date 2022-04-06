@@ -23,12 +23,12 @@ const routes = [
 
 const Header = ({ siteTitle, siteDescription }: Props) => {
   return (
-    <div className="p-3 bg-white dark:bg-dark-800">
+    <header className="p-3 bg-teal-500">
       <div className="flex flex-wrap sm:flex-row items-end">
         <div className="px-2">
           <Link
             to="/"
-            className="text-teal-500 text-2xl font-bold"
+            className="text-2xl font-bold"
             style={{
               textDecoration: "none",
             }}
@@ -38,7 +38,7 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
         </div>
 
         <div className="px-2">
-          <p className="text-teal-500 text-xs">{siteDescription}</p>
+          <p className="text-xs">{siteDescription}</p>
         </div>
 
         <div className="px-2">
@@ -49,7 +49,7 @@ const Header = ({ siteTitle, siteDescription }: Props) => {
           ))}
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 

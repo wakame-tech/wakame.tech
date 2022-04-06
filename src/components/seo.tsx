@@ -29,7 +29,7 @@ const Seo = (props: Props) => {
 
   return (
     <Helmet
-      htmlAttributes={{ lang: "ja" }}
+      htmlAttributes={{ lang: "ja", "data-theme": "dark" }}
       title={pageTitle}
       meta={[
         {
