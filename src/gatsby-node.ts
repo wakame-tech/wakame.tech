@@ -4,25 +4,42 @@ import { Mdx, MdxConnection } from "../types/graphql-types"
 import { Entry } from "./model"
 import { PostPageProps } from "./templates/post"
 import { TagsPageProps } from "./templates/tagsPage"
-import { createPosts } from "./utils/MdxAdapter"
+import { createEntries, createPosts } from "./utils/MdxAdapter"
 import { slides } from "./utils/slides"
 
 const getAllMdx = async (
   graphql: CreatePagesArgs["graphql"]
 ): Promise<Mdx[]> => {
+  // 記事同士の依存関係も取得
   const query = `
-  {
+  query {
     allMdx {
       nodes {
-        id
-        frontmatter {
-          title
-          tags
-          date(formatString: "YYYY-MM-DD")
-        }
+        ...entryFragment
         body
-        fileAbsolutePath
+
+        inboundReferences {
+          ... on Mdx {
+            ...entryFragment
+          }
+        }
+
+        outboundReferences {
+          ... on Mdx {
+            ...entryFragment
+          }
+        }
       }
+    }
+  }
+
+  fragment entryFragment on Mdx {
+    id
+    fileAbsolutePath
+    frontmatter {
+      title
+      tags
+      date(formatString: "YYYY-MM-DD")
     }
   }
   `
@@ -72,11 +89,13 @@ export const createTagPages = async ({
   traceId: "initial-createPages"
 }) => {
   const nodes = await getAllMdx(graphql)
-  const posts = createPosts(nodes).filter(post => !(post.fixed || post.draft))
-  const entries = [...posts, ...slides]
+  const postEntries = createEntries(nodes).filter(
+    entry => !(entry.fixed || entry.draft)
+  )
+  const allEntries = [...postEntries, ...slides]
   const entriesMap: Record<string, Entry[]> = {}
 
-  entries.forEach(entry => {
+  allEntries.forEach(entry => {
     entry.tags.forEach(tag => {
       if (!Object.keys(entriesMap).includes(tag)) {
         entriesMap[tag] = [entry]

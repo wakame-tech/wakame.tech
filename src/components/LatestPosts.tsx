@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { MdxConnection } from "../../types/graphql-types"
-import { createPosts } from "../utils/MdxAdapter"
+import { createEntries } from "../utils/MdxAdapter"
 import EntryRow from "./entry_row"
 import Title from "./title"
 
@@ -30,18 +30,19 @@ const LatestPosts = () => {
     }
   `)
 
-  const posts = createPosts(allMdx.nodes)
+  const entries = createEntries(allMdx.nodes)
 
   return (
     <div>
       <header className="py-2">
         <Title title="latest posts" />
       </header>
+
       <div className="m-auto">
         <ul className="list-none">
-          {posts.map(post => (
-            <div className="" key={post.id}>
-              <EntryRow entry={post} />
+          {entries.map(entry => (
+            <div className="" key={entry.id}>
+              <EntryRow entry={entry} />
             </div>
           ))}
         </ul>

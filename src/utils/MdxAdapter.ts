@@ -1,5 +1,5 @@
-import { Maybe, Mdx } from "../../types/graphql-types_"
-import { Post } from "../model"
+import { Maybe, Mdx, ReferenceTarget } from "../../types/graphql-types"
+import { Entry, Post } from "../model"
 
 const basename = (filePath: string): string => {
   const paths = filePath.split("/")
@@ -7,15 +7,17 @@ const basename = (filePath: string): string => {
   return fileName.split(".")[0]
 }
 
-export const createPost = (node: Mdx): Maybe<Post> => {
+export const createEntry = (node: Partial<ReferenceTarget>): Maybe<Entry> => {
   if (
+    !node.id ||
     !node.fileAbsolutePath ||
     !node.frontmatter ||
     !node.frontmatter.title ||
     !node.frontmatter.date ||
     !node.frontmatter.tags
   ) {
-    // `${node.id} ${node.fileAbsolutePath} frontmatter not found`
+    console.log(node)
+    console.warn(`${node.id} ${node.fileAbsolutePath} frontmatter not found`)
     return undefined
   }
 
@@ -32,10 +34,34 @@ export const createPost = (node: Mdx): Maybe<Post> => {
     date: fm.date,
     draft: includeDraftTag,
     fixed: includeFixedTag,
+  }
+}
+
+export const createPost = (node: Partial<Mdx>): Maybe<Post> => {
+  const entry = createEntry(node)
+  if (!entry || !node.body) {
+    return undefined
+  }
+
+  const inbounds =
+    node.inboundReferences?.map(createEntry)?.filter((e): e is Entry => !!e) ??
+    []
+  const outbounds =
+    node.outboundReferences?.map(createEntry)?.filter((e): e is Entry => !!e) ??
+    []
+
+  return {
+    ...entry,
     body: node.body,
+    inbounds,
+    outbounds,
   }
 }
 
 export const createPosts = (nodes: Mdx[]): Post[] => {
   return nodes.map(createPost).filter((post): post is Post => !!post)
+}
+
+export const createEntries = (nodes: Mdx[]): Entry[] => {
+  return nodes.map(createEntry).filter((entry): entry is Entry => !!entry)
 }

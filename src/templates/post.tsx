@@ -1,5 +1,6 @@
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
+import EntryRow from "../components/entry_row"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Tags from "../components/tags"
@@ -27,7 +28,35 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
           </div>
         </header>
 
+        <div className="m-auto">
+          {post.outbounds.length !== 0 && (
+            <>
+              <h2>参照している記事</h2>
+
+              <ul className="list-none">
+                {post.outbounds.map(entry => (
+                  <EntryRow key={entry.id} entry={entry} />
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+
         <MDXRenderer>{post.body}</MDXRenderer>
+
+        <div className="m-auto">
+          {post.inbounds.length !== 0 && (
+            <>
+              <h2>参照されている記事</h2>
+
+              <ul className="list-none">
+                {post.inbounds.map(entry => (
+                  <EntryRow key={entry.id} entry={entry} />
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
       </article>
     </Layout>
   )

@@ -76,6 +76,7 @@ const plugins: GatsbyConfig["plugins"] = [
         {
           resolve: "gatsby-remark-obsidian",
           options: {
+            // all blog posts are in /posts/
             titleToURL: (title: string) => `/posts/${title}`,
             markdownFolder: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
             highlightClassName: "highlight",
@@ -91,6 +92,12 @@ const plugins: GatsbyConfig["plugins"] = [
           },
         },
       ],
+    },
+  },
+  {
+    resolve: `gatsby-transformer-markdown-references`,
+    options: {
+      types: ["Mdx"],
     },
   },
   `gatsby-plugin-twitter`,
