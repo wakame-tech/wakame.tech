@@ -12,7 +12,7 @@ const Footer = (props: Props) => {
         <Link className="text-white underline" to="/bio">
           by {props.siteAuthor}
         </Link>
-        <Link className="text=white underline" to="/about">
+        <Link className="text-white underline" to="/about">
           このブログについて
         </Link>
       </div>

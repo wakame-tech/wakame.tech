@@ -1,24 +1,25 @@
-require("dotenv").config(`${__dirname}/../.env`)
-import type { GatsbyConfig } from "gatsby"
-import rehypeKatex from "rehype-katex"
-import remarkMath from "remark-math"
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config(`${__dirname}/../.env`)
+import type { GatsbyConfig } from 'gatsby'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 
-const siteMetadata: GatsbyConfig["siteMetadata"] = {
+const siteMetadata: GatsbyConfig['siteMetadata'] = {
   title: `自己否定感`,
-  author: "wakame_tech",
-  description: "noop",
-  ogpImageUrl: "https://i.imgur.com/yfCPFXf.png",
+  author: 'wakame_tech',
+  description: 'noop',
+  ogpImageUrl: 'https://i.imgur.com/yfCPFXf.png',
 }
 
-const plugins: GatsbyConfig["plugins"] = [
+const plugins: GatsbyConfig['plugins'] = [
   `gatsby-plugin-windicss`,
   {
-    resolve: "gatsby-plugin-graphql-codegen",
+    resolve: 'gatsby-plugin-graphql-codegen',
     options: {
       fileName: `types/graphql-types.d.ts`,
       codegenDelay: 100,
       codegen: true,
-      codegenConfig: { maybeValue: "T | undefined" },
+      codegenConfig: { maybeValue: 'T | undefined' },
     },
   },
   `gatsby-plugin-react-helmet`,
@@ -45,24 +46,25 @@ const plugins: GatsbyConfig["plugins"] = [
       anonymize: true,
     },
   },
+  // blog posts
   {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `blog`,
-      path: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH!}`,
+      path: `${__dirname}/${process.env.LOCAL_VAULT_PATH!}/blog`,
     },
   },
   {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `images`,
-      path: `${__dirname}/${process.env.LOCAL_IMAGE_PATH!}`,
+      path: `${__dirname}/${process.env.LOCAL_VAULT_PATH!}/_paste`,
     },
   },
   {
     resolve: `gatsby-transformer-markdown-references`,
     options: {
-      types: ["Mdx"],
+      types: ['Mdx'],
     },
   },
   {
@@ -74,12 +76,12 @@ const plugins: GatsbyConfig["plugins"] = [
       rehypePlugins: [rehypeKatex],
       gatsbyRemarkPlugins: [
         {
-          resolve: "gatsby-remark-obsidian",
+          resolve: 'gatsby-remark-obsidian',
           options: {
             // all blog posts are in /posts/
             titleToURL: (title: string) => `/posts/${title}`,
-            markdownFolder: `${__dirname}/${process.env.LOCAL_ARTICLE_PATH}`,
-            highlightClassName: "highlight",
+            markdownFolder: `${__dirname}/${process.env.LOCAL_VAULT_PATH}/blog`,
+            highlightClassName: 'highlight',
           },
         },
         `gatsby-remark-images`,
@@ -97,7 +99,7 @@ const plugins: GatsbyConfig["plugins"] = [
   {
     resolve: `gatsby-transformer-markdown-references`,
     options: {
-      types: ["Mdx"],
+      types: ['Mdx'],
     },
   },
   `gatsby-plugin-twitter`,

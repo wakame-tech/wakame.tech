@@ -23,12 +23,12 @@ const routes = [
 
 const Header = ({ siteTitle, siteDescription }: Props) => {
   return (
-    <header className="p-3 bg-teal-500">
+    <header className="p-3">
       <div className="flex flex-wrap sm:flex-row items-end">
         <div className="px-2">
           <Link
             to="/"
-            className="text-2xl font-bold"
+            className="text-2xl font-bold text-teal-500"
             style={{
               textDecoration: "none",
             }}

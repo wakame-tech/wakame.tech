@@ -1,6 +1,12 @@
 import { Maybe, Mdx, ReferenceTarget } from "../../types/graphql-types"
 import { Entry, Post } from "../model"
 
+const dirname = (filePath: string): string => {
+  const paths = filePath.split("/")
+  const dirName = paths[paths.length - 2]
+  return dirName
+}
+
 const basename = (filePath: string): string => {
   const paths = filePath.split("/")
   const fileName = paths[paths.length - 1]
@@ -12,11 +18,9 @@ export const createEntry = (node: Partial<ReferenceTarget>): Maybe<Entry> => {
     !node.id ||
     !node.fileAbsolutePath ||
     !node.frontmatter ||
-    !node.frontmatter.title ||
     !node.frontmatter.date ||
     !node.frontmatter.tags
   ) {
-    console.log(node)
     console.warn(`${node.id} ${node.fileAbsolutePath} frontmatter not found`)
     return undefined
   }
@@ -24,12 +28,18 @@ export const createEntry = (node: Partial<ReferenceTarget>): Maybe<Entry> => {
   const fm = node.frontmatter
   const includeFixedTag = fm.tags?.includes("fixed") ?? false
   const includeDraftTag = fm.tags?.includes("draft") ?? false
+  const dirName = dirname(node.fileAbsolutePath)
   const fileBaseName = basename(node.fileAbsolutePath)
+
+  const category = {
+    blog: "posts",
+    products: "products",
+  }[dirName]
 
   return {
     id: node.id,
-    to: `/posts/${fileBaseName}`,
-    title: fm.title,
+    to: `/${category}/${fileBaseName}`,
+    title: fm.title ?? basename(node.fileAbsolutePath),
     tags: fm.tags as string[],
     date: fm.date,
     draft: includeDraftTag,

@@ -1,6 +1,7 @@
-const { register } = require("esbuild-register/dist/node")
+import { register } from 'esbuild-register/dist/node'
 register({
-  target: "node16",
+  target: 'node16',
 })
 
-exports.createPages = require("./src/gatsby-node").createPages
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+export const createPages = require('./src/gatsby-node').createPages

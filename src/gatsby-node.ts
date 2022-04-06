@@ -1,14 +1,14 @@
-import { CreatePagesArgs, GatsbyNode } from "gatsby"
-import path from "path"
-import { Mdx, MdxConnection } from "../types/graphql-types"
-import { Entry } from "./model"
-import { PostPageProps } from "./templates/post"
-import { TagsPageProps } from "./templates/tagsPage"
-import { createEntries, createPosts } from "./utils/MdxAdapter"
-import { slides } from "./utils/slides"
+import { CreatePagesArgs, GatsbyNode } from 'gatsby'
+import path from 'path'
+import { Mdx, MdxConnection } from '../types/graphql-types'
+import { Entry } from './model'
+import { PostPageProps } from './templates/post'
+import { TagsPageProps } from './templates/tagsPage'
+import { createEntries, createPosts } from './utils/MdxAdapter'
+import { slides } from './utils/slides'
 
 const getAllMdx = async (
-  graphql: CreatePagesArgs["graphql"]
+  graphql: CreatePagesArgs['graphql']
 ): Promise<Mdx[]> => {
   // 記事同士の依存関係も取得
   const query = `
@@ -56,7 +56,7 @@ const createPostPages = async ({
   graphql,
   actions: { createPage },
 }: CreatePagesArgs & {
-  traceId: "initial-createPages"
+  traceId: 'initial-createPages'
 }) => {
   const nodes = await getAllMdx(graphql)
   const posts = createPosts(nodes).filter(post => !post.draft)
@@ -66,17 +66,18 @@ const createPostPages = async ({
     .forEach(post => {
       createPage<PostPageProps>({
         path: post.to,
-        component: path.resolve(__dirname, "../src/templates/post.tsx"),
+        component: path.resolve(__dirname, '../src/templates/post.tsx'),
         context: { post },
       })
     })
 
+  // fixed post
   posts
     .filter(post => post.fixed)
     .forEach(post => {
       createPage<PostPageProps>({
         path: `/${post.title}`,
-        component: path.resolve(__dirname, "../src/templates/post.tsx"),
+        component: path.resolve(__dirname, '../src/templates/post.tsx'),
         context: { post },
       })
     })
@@ -86,7 +87,7 @@ export const createTagPages = async ({
   graphql,
   actions: { createPage },
 }: CreatePagesArgs & {
-  traceId: "initial-createPages"
+  traceId: 'initial-createPages'
 }) => {
   const nodes = await getAllMdx(graphql)
   const postEntries = createEntries(nodes).filter(
@@ -107,16 +108,16 @@ export const createTagPages = async ({
 
   createPage<TagsPageProps>({
     path: `/tags/`,
-    component: path.resolve(__dirname, "../src/templates/tagsPage.tsx"),
+    component: path.resolve(__dirname, '../src/templates/tagsPage.tsx'),
     context: {
       entriesMap,
     },
   })
 }
 
-export const createPages: GatsbyNode["createPages"] = async (
+export const createPages: GatsbyNode['createPages'] = async (
   createPageArgs: CreatePagesArgs & {
-    traceId: "initial-createPages"
+    traceId: 'initial-createPages'
   }
 ) => {
   await createPostPages(createPageArgs)

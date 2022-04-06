@@ -1,32 +1,48 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { MdxConnection } from "../../types/graphql-types"
-import { createPosts } from "../utils/MdxAdapter"
+import { createEntries, createPosts } from "../utils/MdxAdapter"
 import EntryRow from "./entry_row"
 import Title from "./title"
 
 const LifeLogs = () => {
   const { allMdx } = useStaticQuery<{ allMdx: MdxConnection }>(graphql`
-    {
+    query {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
         limit: 10
         filter: { frontmatter: { tags: { in: ["lifelog", "ポエム"] } } }
       ) {
         nodes {
-          id
-          frontmatter {
-            title
-            tags
-            date(formatString: "YYYY-MM-DD")
+          ...entryFragment
+
+          inboundReferences {
+            ... on Mdx {
+              ...entryFragment
+            }
           }
-          fileAbsolutePath
+
+          outboundReferences {
+            ... on Mdx {
+              ...entryFragment
+            }
+          }
         }
+      }
+    }
+
+    fragment entryFragment on Mdx {
+      id
+      fileAbsolutePath
+      frontmatter {
+        title
+        tags
+        date(formatString: "YYYY-MM-DD")
       }
     }
   `)
 
-  const posts = createPosts(allMdx.nodes)
+  const entries = createEntries(allMdx.nodes)
 
   return (
     <div>
@@ -35,9 +51,9 @@ const LifeLogs = () => {
       </header>
       <div className="m-auto">
         <ul className="list-none">
-          {posts.map(post => (
-            <div className="" key={post.id}>
-              <EntryRow entry={post} />
+          {entries.map(entry => (
+            <div className="" key={entry.id}>
+              <EntryRow entry={entry} />
             </div>
           ))}
         </ul>
