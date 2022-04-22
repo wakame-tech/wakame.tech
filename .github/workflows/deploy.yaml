@@ -15,7 +15,7 @@ jobs:
           submodules: true
           token: ${{ secrets.REPO_PAT }}
       - name: Cache pnpm modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${YARN_CACHE_FOLDER}
           key: ${{ runner.os }}-yarn-cache-v1
