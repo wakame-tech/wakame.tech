@@ -1,9 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import { MdxConnection } from "../../types/graphql-types"
-import { createEntries } from "../utils/MdxAdapter"
-import EntryRow from "./entry_row"
-import Title from "./title"
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { MdxConnection } from '../../types/graphql-types'
+import { createEntries } from '../utils/MdxAdapter'
+import EntryRow from './entry_row'
+import Title from './title'
 
 const LatestPosts = () => {
   const { allMdx } = useStaticQuery<{
@@ -12,7 +12,7 @@ const LatestPosts = () => {
     {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
-        limit: 10
+        limit: 15
         filter: {
           frontmatter: { tags: { nin: ["lifelog", "fixed", "bio", "ポエム"] } }
         }
@@ -35,7 +35,7 @@ const LatestPosts = () => {
   return (
     <div>
       <header className="py-2">
-        <Title title="latest posts" />
+        <Title title="take 15 latestPosts" />
       </header>
 
       <div className="m-auto">

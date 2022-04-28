@@ -1,16 +1,16 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import { MdxConnection } from "../../types/graphql-types"
-import { createEntries, createPosts } from "../utils/MdxAdapter"
-import EntryRow from "./entry_row"
-import Title from "./title"
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { MdxConnection } from '../../types/graphql-types'
+import { createEntries, createPosts } from '../utils/MdxAdapter'
+import EntryRow from './entry_row'
+import Title from './title'
 
 const LifeLogs = () => {
   const { allMdx } = useStaticQuery<{ allMdx: MdxConnection }>(graphql`
     query {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
-        limit: 10
+        limit: 15
         filter: { frontmatter: { tags: { in: ["lifelog", "ポエム"] } } }
       ) {
         nodes {
@@ -47,7 +47,7 @@ const LifeLogs = () => {
   return (
     <div>
       <header className="py-2">
-        <Title title="lifelogs" />
+        <Title title="take 15 lifelogs" />
       </header>
       <div className="m-auto">
         <ul className="list-none">

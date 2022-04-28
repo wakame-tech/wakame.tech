@@ -57,8 +57,9 @@ a:hover {
 
 img {
   @apply m-auto;
+  @apply my-4;
   @apply py-2;
-  max-width: 80%;
+  width: 100%;
   height: auto;
 }
 
