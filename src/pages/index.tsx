@@ -1,9 +1,9 @@
-import React from "react"
-import LatestPosts from "../components/LatestPosts"
-import Layout from "../components/layout"
-import LifeLogs from "../components/Lifelogs"
-import Seo from "../components/seo"
-import Slides from "../components/Slides"
+import React from 'react'
+import LatestPosts from '../components/LatestPosts'
+import Layout from '../components/layout'
+import LifeLogs from '../components/Lifelogs'
+import Seo from '../components/seo'
+import Slides from '../components/Slides'
 
 const IndexPage = () => {
   return (

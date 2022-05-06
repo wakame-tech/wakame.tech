@@ -1,16 +1,16 @@
-import { Maybe, Mdx, ReferenceTarget } from "../../types/graphql-types"
-import { Entry, Post } from "../model"
+import { Maybe, Mdx, ReferenceTarget } from '../../types/graphql-types'
+import { Entry, Post } from '../model'
 
 const dirname = (filePath: string): string => {
-  const paths = filePath.split("/")
+  const paths = filePath.split('/')
   const dirName = paths[paths.length - 2]
   return dirName
 }
 
 const basename = (filePath: string): string => {
-  const paths = filePath.split("/")
+  const paths = filePath.split('/')
   const fileName = paths[paths.length - 1]
-  return fileName.split(".")[0]
+  return fileName.split('.')[0]
 }
 
 export const createEntry = (node: Partial<ReferenceTarget>): Maybe<Entry> => {
@@ -26,14 +26,14 @@ export const createEntry = (node: Partial<ReferenceTarget>): Maybe<Entry> => {
   }
 
   const fm = node.frontmatter
-  const includeFixedTag = fm.tags?.includes("fixed") ?? false
-  const includeDraftTag = fm.tags?.includes("draft") ?? false
+  const includeFixedTag = fm.tags?.includes('fixed') ?? false
+  const includeDraftTag = fm.tags?.includes('draft') ?? false
   const dirName = dirname(node.fileAbsolutePath)
   const fileBaseName = basename(node.fileAbsolutePath)
 
   const category = {
-    blog: "posts",
-    products: "products",
+    blog: 'posts',
+    products: 'products',
   }[dirName]
 
   return {

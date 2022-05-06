@@ -5,35 +5,23 @@ import EntryRow from '../components/entry_row'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import Title from '../components/title'
-import { Entry } from '../model'
 import { createEntries } from '../utils/MdxAdapter'
 
 const WorksPage = () => {
-  // const { allMdx } = useStaticQuery<{ allMdx: MdxConnection }>(graphql`
-  //   query {
-  //     allMdx(
-  //       sort: { order: DESC, fields: frontmatter___date }
-  //       filter: { fileAbsolutePath: { glob: "products" } }
-  //     ) {
-  //       nodes {
-  //         ...entryFragment
-  //       }
-  //     }
-  //   }
+  const { allMdx } = useStaticQuery<{ allMdx: MdxConnection }>(graphql`
+    {
+      allMdx(
+        sort: { order: DESC, fields: frontmatter___date }
+        filter: { fileAbsolutePath: { glob: "**/products/**" } }
+      ) {
+        nodes {
+          ...entryFragment
+        }
+      }
+    }
+  `)
 
-  //   fragment entryFragment on Mdx {
-  //     id
-  //     fileAbsolutePath
-  //     frontmatter {
-  //       # title
-  //       tags
-  //       # date(formatString: "YYYY-MM-DD")
-  //     }
-  //   }
-  // `)
-
-  // const entries = createEntries(allMdx.nodes)
-  const entries: Entry[] = []
+  const entries = createEntries(allMdx.nodes)
 
   return (
     <Layout>

@@ -1,11 +1,11 @@
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import React from "react"
-import EntryRow from "../components/entry_row"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Tags from "../components/tags"
-import Title from "../components/title"
-import { Post } from "../model"
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React from 'react'
+import EntryRow from '../components/entry_row'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
+import Tags from '../components/tags'
+import Title from '../components/title'
+import { Post } from '../model'
 
 export type PostPageProps = {
   post: Post
@@ -20,7 +20,9 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
       <article>
         <header className="w-full">
           <div className="">
-            <time className="pt-1 text-info-content text-sm">{post.date}</time>
+            <time className="pt-1 text-secondary-content text-sm">
+              {post.date}
+            </time>
             <h1 className="text-2xl text-primary-content">{post.title} </h1>
             <div className="py-1">
               <Tags tags={post.tags} />

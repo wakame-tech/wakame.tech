@@ -57,6 +57,13 @@ const plugins: GatsbyConfig['plugins'] = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
+      name: `products`,
+      path: `${__dirname}/${process.env.LOCAL_VAULT_PATH!}/products`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
       name: `images`,
       path: `${__dirname}/${process.env.LOCAL_VAULT_PATH!}/_paste`,
     },
@@ -93,6 +100,7 @@ const plugins: GatsbyConfig['plugins'] = [
             noInlineHighlight: false,
           },
         },
+        `gatsby-remark-autolink-headers`,
       ],
     },
   },
