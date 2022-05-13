@@ -8801,7 +8801,7 @@ gatsby-react-router-scroll@^5.13.0:
     "@babel/runtime" "^7.15.4"
     prop-types "^15.8.1"
 
-gatsby-remark-autolink-headers@^5.13.0:
+gatsby-remark-autolink-headers@5.13.0:
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-5.13.0.tgz#8d101392a22d3d44c0cc5e4a01b1196f492d01d8"
   integrity sha512-/3e4TCDT8KxCJOa0IwdbOLIlT7lN30kigw1hrLgqsCmCtkn1R54ntOcCYcPWDU3Hg8GKmQE+2xdHtoblORv6ow==
