@@ -1,5 +1,5 @@
-import { visit } from 'unist-util-visit'
-import { toString } from 'mdast-util-to-string'
+const visit = require('unist-util-visit')
+const toString = require('mdast-util-to-string')
 
 // TODO: refactoring
 const plugin = ({ markdownAST }, pluginOptions) => {
