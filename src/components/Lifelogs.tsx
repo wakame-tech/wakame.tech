@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MdxConnection } from '../../types/graphql-types'
 import { createEntries, createPosts } from '../utils/MdxAdapter'
-import EntryRow from './entry_row'
+import EntryRow from './EntryRow'
 import Title from './title'
 
 const LifeLogs = () => {
@@ -10,7 +10,7 @@ const LifeLogs = () => {
     query {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
-        limit: 15
+        limit: 10
         filter: { frontmatter: { tags: { in: ["lifelog", "ポエム"] } } }
       ) {
         nodes {
@@ -47,7 +47,7 @@ const LifeLogs = () => {
   return (
     <div>
       <header className="py-2">
-        <Title title="take 15 lifelogs" />
+        <Title title="take 10 lifelogs" />
       </header>
       <div className="m-auto">
         <ul className="list-none">

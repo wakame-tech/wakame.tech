@@ -1,7 +1,7 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import { Helmet } from "react-helmet"
-import { Site } from "../../types/graphql-types"
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { Site } from '../../types/graphql-types'
 
 type Props = {
   title: string
@@ -23,13 +23,13 @@ const Seo = (props: Props) => {
     `
   )
 
-  const metaDescription = site?.siteMetadata?.description ?? ""
+  const metaDescription = site?.siteMetadata?.description ?? ''
   const pageTitle = `${props.title} | ${site?.siteMetadata?.title}`
-  const ogpImageUrl = site?.siteMetadata?.ogpImageUrl ?? ""
+  const ogpImageUrl = site?.siteMetadata?.ogpImageUrl ?? ''
 
   return (
     <Helmet
-      htmlAttributes={{ lang: "ja", "data-theme": "dark" }}
+      htmlAttributes={{ lang: 'ja', 'data-theme': 'business' }}
       title={pageTitle}
       meta={[
         {

@@ -617,7 +617,6 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   aliases?: Maybe<Array<Maybe<Scalars['String']>>>;
-  draft?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -1136,7 +1135,6 @@ export type MdxFrontmatterFilterInput = {
   date?: InputMaybe<DateQueryOperatorInput>;
   tags?: InputMaybe<StringQueryOperatorInput>;
   aliases?: InputMaybe<StringQueryOperatorInput>;
-  draft?: InputMaybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxHeadingMdxFilterListInput = {
@@ -1393,7 +1391,6 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___date'
   | 'childrenMdx___frontmatter___tags'
   | 'childrenMdx___frontmatter___aliases'
-  | 'childrenMdx___frontmatter___draft'
   | 'childrenMdx___slug'
   | 'childrenMdx___body'
   | 'childrenMdx___excerpt'
@@ -1451,7 +1448,6 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___tags'
   | 'childMdx___frontmatter___aliases'
-  | 'childMdx___frontmatter___draft'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -3257,7 +3253,6 @@ export type MdxFieldsEnum =
   | 'frontmatter___date'
   | 'frontmatter___tags'
   | 'frontmatter___aliases'
-  | 'frontmatter___draft'
   | 'slug'
   | 'body'
   | 'excerpt'

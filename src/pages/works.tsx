@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MdxConnection } from '../../types/graphql-types'
-import EntryRow from '../components/entry_row'
+import EntryRow from '../components/EntryRow'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import Title from '../components/title'

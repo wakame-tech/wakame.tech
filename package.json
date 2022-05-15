@@ -59,6 +59,7 @@
     "dev": "gatsby develop",
     "build": "gatsby build",
     "prettier:fix": "prettier --write ./src/",
-    "deploy": "pnpm build && netlify deploy --prod"
+    "deploy": "pnpm build && netlify deploy --prod",
+    "clean": "gatsby clean"
   }
 }

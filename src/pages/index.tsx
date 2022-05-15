@@ -18,9 +18,9 @@ const IndexPage = () => {
         <LifeLogs />
       </article>
 
-      <article className="p-2">
+      {/* <article className="p-2">
         <Slides />
-      </article>
+      </article> */}
     </Layout>
   )
 }
