@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { MdxConnection } from '../../types/graphql-types'
 import { createEntries } from '../utils/MdxAdapter'
-import EntryRow from './entry_row'
+import EntryRow from './EntryRow'
 import Title from './title'
 
 const LatestPosts = () => {
@@ -12,8 +12,9 @@ const LatestPosts = () => {
     {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
-        limit: 15
+        limit: 20
         filter: {
+          fileAbsolutePath: { glob: "**/blog/**" }
           frontmatter: { tags: { nin: ["lifelog", "fixed", "bio", "ポエム"] } }
         }
       ) {
@@ -35,7 +36,7 @@ const LatestPosts = () => {
   return (
     <div>
       <header className="py-2">
-        <Title title="take 15 latestPosts" />
+        <Title title="take 20 latestPosts" />
       </header>
 
       <div className="m-auto">

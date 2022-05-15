@@ -1,0 +1,11 @@
+{
+  "name": "gatsby-remark-hashtag",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mdast-util-to-string": "^3.1.0",
+    "remark": "^14.0.2",
+    "unist-util-visit": "^4.1.0"
+  }
+}

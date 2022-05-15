@@ -1,9 +1,9 @@
-import React from "react"
-import EntryRow from "../components/entry_row"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Title from "../components/title"
-import { Entry } from "../model"
+import React from 'react'
+import EntryRow from '../components/EntryRow'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
+import Title from '../components/title'
+import { Entry } from '../model'
 
 export type TagsPageProps = {
   entriesMap: Record<string, Entry[]>

@@ -1,7 +1,7 @@
-import React from "react"
-import { slides } from "../utils/slides"
-import EntryRow from "./entry_row"
-import Title from "./title"
+import React from 'react'
+import { slides } from '../utils/slides'
+import EntryRow from './EntryRow'
+import Title from './title'
 
 const Slides = () => {
   return (

@@ -1,6 +1,6 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
-import EntryRow from '../components/entry_row'
+import EntryRow from '../components/EntryRow'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import Tags from '../components/tags'
@@ -20,7 +20,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
       <article>
         <header className="w-full">
           <div className="">
-            <time className="pt-1 text-secondary-content text-sm">
+            <time className="pt-1 text-neutral-content text-sm">
               {post.date}
             </time>
             <h1 className="text-2xl text-primary-content">{post.title} </h1>
@@ -30,12 +30,10 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
           </div>
         </header>
 
-        <div className="divider divider-horizontal"></div>
-
         {post.outbounds.length !== 0 && (
           <>
             <div className="m-auto pb-8">
-              <h3>参照している記事</h3>
+              <h4>参照している記事</h4>
 
               <ul className="list-none">
                 {post.outbounds.map(entry => (
@@ -55,7 +53,7 @@ const PostPage = ({ pageContext }: { pageContext: PostPageProps }) => {
         {post.inbounds.length !== 0 && (
           <>
             <div className="m-auto pt-8">
-              <h3 className="">参照されている記事</h3>
+              <h4 className="">参照されている記事</h4>
 
               <ul className="list-none">
                 {post.inbounds.map(entry => (
