@@ -83,6 +83,12 @@ const plugins: GatsbyConfig['plugins'] = [
       rehypePlugins: [rehypeKatex],
       gatsbyRemarkPlugins: [
         {
+          resolve: `gatsby-remark-hashtag`,
+          options: {
+            toTag: (tag: string) => `/tags/`,
+          },
+        },
+        {
           resolve: 'gatsby-remark-obsidian',
           options: {
             // all blog posts are in /posts/
