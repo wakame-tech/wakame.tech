@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "@types/react-helmet": "6.1.5",
-    "@typescript-eslint/eslint-plugin": "5.23.0",
-    "@typescript-eslint/parser": "5.23.0",
+    "@typescript-eslint/eslint-plugin": "5.25.0",
+    "@typescript-eslint/parser": "5.25.0",
     "esbuild": "0.14.39",
     "esbuild-register": "3.3.2",
     "eslint": "8.15.0",
