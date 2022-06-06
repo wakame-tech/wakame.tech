@@ -11,7 +11,9 @@ const LifeLogs = () => {
       allMdx(
         sort: { order: DESC, fields: frontmatter___date }
         limit: 10
-        filter: { frontmatter: { tags: { in: ["lifelog", "ポエム"] } } }
+        filter: {
+          frontmatter: { tags: { in: ["lifelog", "ポエム"], nin: ["draft"] } }
+        }
       ) {
         nodes {
           ...entryFragment

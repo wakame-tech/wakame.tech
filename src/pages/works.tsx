@@ -29,7 +29,7 @@ const WorksPage = () => {
 
       <article className="p-2">
         <header className="py-2">
-          <Title title="works" />
+          <Title title="やったこと" />
         </header>
 
         <div className="m-auto">

@@ -15,7 +15,9 @@ const LatestPosts = () => {
         limit: 20
         filter: {
           fileAbsolutePath: { glob: "**/blog/**" }
-          frontmatter: { tags: { nin: ["lifelog", "fixed", "bio", "ポエム"] } }
+          frontmatter: {
+            tags: { nin: ["lifelog", "draft", "fixed", "bio", "ポエム"] }
+          }
         }
       ) {
         nodes {
