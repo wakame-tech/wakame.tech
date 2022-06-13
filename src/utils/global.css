@@ -27,14 +27,16 @@ h1 {
   @apply pt-4;
   @apply text-2xl;
   @apply font-bold;
+  @apply mb-3;
   @apply var(--header-color);
 }
 
 h2 {
-  @apply pt-4;
+  @apply pt-2;
   @apply text-xl;
   @apply font-bold;
-  @apply mb-3;
+  @apply mt-2;
+  @apply mb-1;
   @apply var(--header-color);
 }
 
@@ -42,7 +44,8 @@ h3 {
   @apply pt-4;
   @apply text-lg;
   @apply font-bold;
-  @apply mb-2;
+  @apply mt-2;
+  @apply mb-1;
   @apply var(--header-color);
 }
 

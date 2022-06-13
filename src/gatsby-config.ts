@@ -5,7 +5,7 @@ import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 
 const siteMetadata: GatsbyConfig['siteMetadata'] = {
-  title: `自己否定感`,
+  title: `過ぎるだけの時間じゃ悔しい`,
   author: 'wakame_tech',
   description: 'noop',
   ogpImageUrl: 'https://i.imgur.com/yfCPFXf.png',
