@@ -39,7 +39,7 @@
     "react-helmet": "6.1.0",
     "rehype-katex": "6.0.2",
     "remark-math": "3.0.1",
-    "windicss": "3.5.4"
+    "windicss": "3.5.5"
   },
   "devDependencies": {
     "@types/react-helmet": "6.1.5",
