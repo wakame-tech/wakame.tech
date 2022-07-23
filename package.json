@@ -8,7 +8,7 @@
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "autoprefixer": "10.4.7",
-    "daisyui": "2.19.1",
+    "daisyui": "2.20.0",
     "dotenv": "14.3.2",
     "gatsby": "4.19.2",
     "gatsby-plugin-google-analytics": "4.19.0",
